@@ -177,3 +177,62 @@ function calculateWinner(squares) {
   }
   return [null, Array()];
 }
+
+function checkWin(squares, rows, cols, cell, numCellsInARow) {
+
+	// look in all directions around this cell to see if the player has won
+
+	const directions = [
+		[ 0,-1], // north
+		[ 1,-1], // ne
+		[ 1, 0], // east
+		[ 1, 1], // se
+		[ 0, 1], // south
+		[-1, 1], // sw
+		[-1, 0], // west
+		[-1,-1], // nw
+	];
+
+	for (let i = 0; i < directions.length; i++) {
+		const x = directions[i][0];
+		const y = directions[i][1];
+		const winningSquares = check(squares, rows, cols, cell, x, y, numCellsInARow);
+		if (winningSquares.length == numCellsInARow) return winningSquares; // player has won
+	}
+
+	return []; // no matches found
+	
+}
+
+function check(squares, rows, cols, cell, x, y, numCellsInARow) {
+	// look in one direction, starting from cell, and staying within the bounds of the grid
+	// checking if every value is equal to the value in cell
+
+	const v = squares[cell]; // the value we are trying to match
+
+	let found = [cell];	// array to store the matches
+
+	const xPos = cell % cols;
+	const xPosLast = xPos + (x * (numCellsInARow - 1));
+	if ( xPosLast > rows || xPosLast < 0 ) return []; // search would extend beyond the grid x bounds
+	
+	// todo... 
+	//const yPos = nextCell / 
+
+	let thisCell = cell;
+	for (let i = 0; i < numCellsInARow -1; i++) {
+
+		// calc index of next cell we need to check
+		thisCell = (x * 1) + (y * cols);
+
+		if (squares[thisCell] == v) {
+			found.push(thisCell);
+		} else {
+			return [];
+		}
+		
+	}
+
+	return [found];
+
+}
