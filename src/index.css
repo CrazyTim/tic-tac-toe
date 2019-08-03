@@ -1,6 +1,18 @@
+* {
+	box-sizing: content-box;
+	user-select: none;
+	cursor: default;
+	transition: all 0.2s ease-out;
+}
+
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  font: 14px sans-serif;
+  margin: 0;
+
+}
+
+html, body {
+	height: 100%;
 }
 
 ol, ul {
@@ -13,15 +25,11 @@ ol, ul {
   display: table;
 }
 
-.status {
-  margin-bottom: 15px;
-}
-
 .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
   line-height: 34px;
   height: 40px;
@@ -43,23 +51,39 @@ ol, ul {
 
 .game {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+  flex-direction: column;
 }
 
 .game-info {
-  margin-left: 20px;
+ 
 }
 
 .square.winner {
 	background-color: lightgreen;
 }
 
-.play-again-button {
+.play-again {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+	margin: 20px 0 0 0;
+}
+
+.play-again button {
 	background: none;
 	background-color: lightgrey;
-	padding: 4px 10px;
+	padding: 10px 20px;
 	border: none;
-	margin-bottom: 15px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.play-again button:hover {
+	background-color: #c0c0c0;
+	/* border: solid 1px darkgrey; */
 }
 
 .hidden {
@@ -68,5 +92,40 @@ ol, ul {
 
 .game-board {
 	border: solid #f0f0f0 20px;
-	/* padding: 10px; */
+	background-color: #f0f0f0;
+}
+
+.score-board {
+	margin: 0 auto 20px auto;
+	background-color: #f0f0f0;
+	display: grid;
+	grid-template-columns: auto auto;
+  justify-content: center;
+	grid-gap: 20px;
+	max-width: 250px; 
+	font-size: 16px;
+}
+
+.score-board span:nth-of-type(2){
+	margin: 0 0 0 10px;
+	font-weight: bold;
+}
+
+.score-board div {
+	background-color: #d0d0d0;
+	padding: 5px 10px;
+}
+
+.score-board .winner {
+	background-color: lightgreen;
+	transition: background-color .5s .1s;
+}
+
+.status {
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+
+.noPointer {
+	cursor: default;
 }
