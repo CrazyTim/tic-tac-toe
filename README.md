@@ -1,12 +1,21 @@
-Having fun doing the [React Tutorial](https://reactjs.org/tutorial/tutorial.html).
+Having fun with the [React Tutorial](https://reactjs.org/tutorial/tutorial.html).
 
-View the [live version](https://crazytim.github.io/reactjs-tutorial).
+View the [live version](https://crazytim.github.io/react-tutorial).
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Improvements
+First install Git and Node.js, then run:
 
-After completing the tutorial, I added some improvements...
+```
+git clone https://github.com/CrazyTim/reactjs-tutorial
+cd reactjs-tutorial
+npm install
+npm start
+```
+
+## Features Added After Completing The Tutorial
 
 - Fancier CSS
 - Button to reset the board and play again
