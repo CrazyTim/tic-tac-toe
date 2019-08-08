@@ -96,8 +96,8 @@ class Game extends React.Component {
 
 	constructor(props) {
 
-		const numRows = 7;
-		const numCols = 7;
+		const numRows = 4;
+		const numCols = 4;
 
 		super(props);
 		this.state = {
