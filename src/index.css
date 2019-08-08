@@ -2,7 +2,6 @@
 	box-sizing: content-box;
 	user-select: none;
 	cursor: default;
-	transition: all 0.2s ease-out;
 }
 
 body {
@@ -63,6 +62,7 @@ ol, ul {
 
 .square.winner {
 	background-color: lightgreen;
+	transition: all 0.2s ease-out;
 }
 
 .play-again {
