@@ -117,8 +117,8 @@ ol, ul {
 }
 
 .score-board .winner {
-	background-color: lightgreen;
-	transition: background-color .5s .1s;
+	/*background-color: lightgreen;
+	transition: background-color .5s .1s;*/
 }
 
 .status {
