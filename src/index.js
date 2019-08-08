@@ -9,7 +9,11 @@ function Square(props) {
 	}
 
 	if (props.gameOver) {
-		className += ' noPointer'
+		className += ' noPointer';
+	}
+
+	if (props.value) {
+		className += ' noPointer';
 	}
 
 	return (
