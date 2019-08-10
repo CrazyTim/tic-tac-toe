@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Board from './Board.mjs';
 import Button from './Button.mjs';
