@@ -26,6 +26,4 @@ npm start
 - Highlight the winning squares
 - Display a message about the result being a draw
 - Show a single undo button, instead of one for each turn
-
-## To Do
-- Split react components into their own files
+- Components and related styles are separated into their own files
