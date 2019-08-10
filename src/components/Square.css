@@ -1,0 +1,32 @@
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 40px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 40px;
+  cursor: pointer;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.square.winner {
+	background-color: lightgreen;
+	transition: all 0.2s ease-out;
+}
+
+.square.disabled {
+	cursor: default;
+}
+
+.square:hover:not(.disabled) {
+	background-color: #f0f0f0;
+}

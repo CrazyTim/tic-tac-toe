@@ -1,0 +1,36 @@
+* {
+	box-sizing: content-box;
+	user-select: none;
+	cursor: default;
+}
+
+body {
+  margin: 0;
+}
+
+.game-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+  flex-direction: column;
+}
+
+.game {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+	background-color: #f0f0f0;
+	font: 14px sans-serif;
+	padding: 20px; /* gap between each item */
+}
+
+.game > div {
+  margin: 8px;  /* gap between each item */
+}
+
+.status {
+  margin: 20px 0 20px 0;
+  text-align: center;
+}

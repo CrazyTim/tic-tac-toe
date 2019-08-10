@@ -1,0 +1,25 @@
+.score-board {
+	margin: 0 auto 0 auto;
+	background-color: #f0f0f0;
+	display: grid;
+	grid-template-columns: auto auto;
+  justify-content: center;
+	grid-gap: 20px;
+	max-width: 250px; 
+	font-size: 16px;
+}
+
+.score-board span:nth-of-type(2){
+	margin: 0 0 0 10px;
+	font-weight: bold;
+}
+
+.score-board div {
+	background-color: #d0d0d0;
+	padding: 5px 10px;
+}
+
+.score-board .winner {
+	/*background-color: lightgreen;
+	transition: background-color .5s .1s;*/
+}
