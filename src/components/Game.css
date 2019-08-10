@@ -22,16 +22,11 @@ body {
   align-items: center;
   justify-content: center;
 	background-color: #f0f0f0;
-	font: 14px sans-serif;
+	font: 16px sans-serif;
 	border-radius: 2px;
 	padding: 20px; /* gap between each item */
 }
 
 .game > * {
   margin: 8px;  /* gap between each item */
-}
-
-.status {
-  margin: 20px 0 20px 0;
-  text-align: center;
 }

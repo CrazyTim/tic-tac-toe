@@ -6,7 +6,6 @@
   justify-content: center;
 	grid-gap: 20px;
 	max-width: 250px; 
-	font-size: 16px;
 }
 
 .score-board span:nth-of-type(2){
@@ -14,14 +13,11 @@
 	font-weight: bold;
 }
 
-.score-board div {
-	
-}
-
 .score-board .winner {
 	/*background-color: lightgreen;
 	transition: background-color .5s .1s;*/
 }
+
 .score-board .player {
 	border: solid 1px #999;
 	border-radius: 3px;
