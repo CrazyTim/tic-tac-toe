@@ -1,4 +1,14 @@
-.board-row:after {
+.board {
+	overflow: hidden;
+	border-radius: 3px;
+	border: solid 1px #999;
+}
+
+.board > div {
+	margin:-1px;
+}
+
+.board .board-row:after {
   clear: both;
   content: "";
   display: table;

@@ -35,7 +35,7 @@ export default class Board extends React.Component {
   	}
 
     return (
-    	<div>{rows}</div>
+    	<div className="board"><div>{rows}</div></div>
     );
 
   }

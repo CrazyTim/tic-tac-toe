@@ -160,19 +160,19 @@ export default class Game extends React.Component {
 
 	    		<div className="status">{status}</div>
 
-	    		<div><Button 
+	    		<Button 
 						value="Undo" 
 						className="btn-undo"
 						onClick={() => this.undo(1)}
 						visible={this.state.currentTurn !== 0}
-					/></div>
+					/>
 
-					<div><Button 
+					<Button 
 						value="Play Again" 
 						className="btn-play-again"
 						onClick={() => this.resetBoard()}
 						visible={(this.state.winner || this.state.draw)}
-					/></div>
+					/>
 
     		</div> 
       </div>
