@@ -8,12 +8,8 @@ function Square(props) {
 		className += ' winner';
 	}
 
-	if (props.gameOver) {
-		className += ' noPointer';
-	}
-
-	if (props.value) {
-		className += ' noPointer';
+	if (props.gameOver || props.value) {
+		className += ' disabled';
 	}
 
 	return (
@@ -25,14 +21,14 @@ function Square(props) {
 	);
 }
 
-function PlayAgainButton(props) {
+function Button(props) {
   let className = '';
 	if (!props.visible) {
 		className = ' hidden';
 	}
 
 	return (
-		<div className={'play-again' + className}>
+		<div className={props.className + className}>
 		  <button 
 		  	onClick={props.onClick}>
 		    {props.value}
@@ -77,6 +73,7 @@ class Board extends React.Component {
 
   	const rows = Array(this.props.numRows);
 
+  	// draw dynamic number of rows and columns
   	for (let i=0; i<this.props.numRows; i++) {
 			const squares = Array(this.props.numCols);
 			const startIndex = (i * this.props.numCols);
@@ -96,26 +93,79 @@ class Game extends React.Component {
 
 	constructor(props) {
 
+		super(props);
+
 		const numRows = 4;
 		const numCols = 4;
 
-		super(props);
 		this.state = {
-			squares: Array(numRows * numCols).fill(null),
+			settings: {
+				numRows: numRows,
+				numCols: numCols,
+				numCellsInALineToWin: 3,
+			},
+			turns: [{
+				squares: Array(numRows * numCols).fill(null),
+			}],
+			score: {
+				'X':0, 
+				'O':0,
+			},
+			currentTurn: 0,
 			xIsNext: true,
 			winner: null,
-			draw: false,
 			winningSquares: [],
-			numRows: numRows,
-			numCols: numCols,
-			numCellsInALineToWin: 3,
-			score: {'X':0, 'O':0}
+			draw: false,
 		};
+
+	}
+
+	resetBoard() {
+
+		console.log('reset_board');
+		this.setState({
+			turns: [{
+				squares: Array(this.state.settings.numRows * this.state.settings.numCols).fill(null),
+			}],
+			currentTurn: 0,
+			xIsNext: true,
+			winner: null,
+			winningSquares: [],
+			draw: false,
+		});
+		
+	}
+
+	getTurns() {
+		return this.state.turns.slice(0, this.state.currentTurn + 1);
+	}
+
+	undo(step) {
+
+		const currentTurn = this.state.currentTurn - step;
+		const score = Object.assign({}, this.state.score); // clone object
+
+		if (currentTurn < 0) return; // can't go back any further
+
+		if (this.state.winner) {
+			score[this.state.winner] -= 1;
+		}
+
+		this.setState({
+			score: score,
+      currentTurn: currentTurn,
+      xIsNext: (currentTurn % 2) === 0,
+      winner: null,
+      winningSquares: [],
+      draw: false,
+    });
+
 	}
 
 	handleClick(i) {
 
-		const squares = this.state.squares.slice();
+		const prevTurns = this.getTurns()
+		const squares = prevTurns[this.state.currentTurn].squares.slice();
 
 		// ignore a click if there is a winner or if this square has already been filled
 		if (this.state.winner || squares[i]) {
@@ -129,8 +179,8 @@ class Game extends React.Component {
 		let winner = null;
 		let winningSquares;
 		for (let i = 0; i < squares.length - 1; i++) {
-			winningSquares = checkWin(squares, this.state.numRows, this.state.numCols, i, this.state.numCellsInALineToWin);
-			if (winningSquares.length === this.state.numCellsInALineToWin) {
+			winningSquares = checkWin(squares, this.state.settings.numRows, this.state.settings.numCols, i, this.state.settings.numCellsInALineToWin);
+			if (winningSquares.length === this.state.settings.numCellsInALineToWin) {
 				winner = squares[i];
 				score[winner] +=1;
 				break;
@@ -143,8 +193,15 @@ class Game extends React.Component {
 			draw = squares.every((i) => {return i != null});
 		}
 
+		const turns = prevTurns.concat([{
+				squares: squares,
+			}])
+
+		const currentTurn = this.state.currentTurn + 1;
+
 		this.setState({
-			squares: squares,
+			turns: turns,
+			currentTurn: currentTurn,
 			xIsNext: !this.state.xIsNext,
 			winner: winner,
 			winningSquares: winningSquares,
@@ -152,16 +209,6 @@ class Game extends React.Component {
 			score: score,
 		});
 
-	}
-
-	resetBoard() {
-		this.setState({
-			squares: Array(this.state.numRows * this.state.numCols).fill(null),
-			xIsNext: true,
-			winner: null,
-			winningSquares: [],
-			draw: false,
-		});
 	}
 
   render() {
@@ -184,18 +231,26 @@ class Game extends React.Component {
 					/>
 
 					<Board 
-	        	squares={this.state.squares}
+	        	squares={this.getTurns()[this.state.currentTurn].squares}
 	        	onClick={(i) => this.handleClick(i)}
 	        	winningSquares={this.state.winningSquares}
-	        	numRows={this.state.numRows}
-	        	numCols={this.state.numCols}
+	        	numRows={this.state.settings.numRows}
+	        	numCols={this.state.settings.numCols}
 	        	score={this.state.score}
 	        />
 
 	    		<div className="status">{status}</div>
 
-	    		<PlayAgainButton 
-						value="play again" 
+	    		<Button 
+						value="Undo" 
+						className="btn btn-undo"
+						onClick={() => this.undo(1)}
+						visible={this.state.currentTurn !== 0}
+					/>
+
+	    		<Button 
+						value="Play Again" 
+						className="btn btn-play-again"
 						onClick={() => this.resetBoard()}
 						visible={(this.state.winner || this.state.draw)}
 					/>

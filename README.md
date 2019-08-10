@@ -25,8 +25,7 @@ npm start
 - Show each player's running score
 - Highlight the winning squares
 - Display a message about the result being a draw
+- Show a single undo button, instead of one for each turn
 
 ## To Do
-
-- Single undo button, instead of one for each move
 - Split react components into their own files

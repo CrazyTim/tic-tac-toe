@@ -40,6 +40,10 @@ ol, ul {
   cursor: pointer;
 }
 
+button.square:hover:not(.disabled) {
+	background-color: #f0f0f0;
+}
+
 .square:focus {
   outline: none;
 }
@@ -65,14 +69,15 @@ ol, ul {
 	transition: all 0.2s ease-out;
 }
 
-.play-again {
+.btn-play-again, 
+.btn-undo {
 	display: flex;
   align-items: center;
   justify-content: center;
 	margin: 20px 0 0 0;
 }
 
-.play-again button {
+.btn button {
 	background: none;
 	background-color: lightgrey;
 	padding: 10px 20px;
@@ -81,7 +86,7 @@ ol, ul {
 	cursor: pointer;
 }
 
-.play-again button:hover {
+.btn button:hover {
 	background-color: #c0c0c0;
 	/* border: solid 1px darkgrey; */
 }
@@ -130,6 +135,6 @@ ol, ul {
   text-align: center;
 }
 
-.noPointer {
+.disabled {
 	cursor: default;
 }
