@@ -184,7 +184,7 @@ export default class Game extends React.Component {
 
     if (squares[cell] === null) return [];
 
-    // define each x/y direction to search in
+    // define x/y steps for each direction we need to search
     const directions = [
       ['n ', 0,-1],
       ['ne', 1,-1],
@@ -198,12 +198,9 @@ export default class Game extends React.Component {
 
     // check in each direction for a match
     for (let i = 0; i < directions.length; i++) {
-      const x = directions[i][1];
-      const y = directions[i][2];
-
-      //console.log('direction check: ' + directions[i][0] + " (x: " + directions[i][1] + ", y: " + directions[i][2] + ")");
-      
-      const winningSquares = this.check(squares, numRows, numCols, cell, x, y, numCellsInALineToWin);
+      const xStep = directions[i][1];
+      const yStep = directions[i][2];
+      const winningSquares = this.check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToWin);
       if (winningSquares.length === numCellsInALineToWin) return winningSquares; // match found
     }
 
@@ -211,39 +208,32 @@ export default class Game extends React.Component {
     
   }
 
-  check(squares, numRows, numCols, cell, x, y, numCellsInALineToWin) {
+  check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToWin) {
     // look in one direction, starting from cell, and staying within the bounds of the grid
     // checking if every value is equal to the value in cell
     // returns an array of the cells that match.
     // ASSUMPTION: cell is correct, and fits inside the number of rows and cols
 
-    const v = squares[cell]; // the value we are trying to match
-
-    let found = [cell]; // array to store the matches
-
-    // only looking for one match lol
+    // check if only looking for one match lol
     if (numCellsInALineToWin === 1) return [cell];
 
     // check if we would extend beyond the grid on x-axis
     const thisCol = cell % numCols; // index
-    const lookAheadCol = thisCol + (x * (numCellsInALineToWin - 1));
+    const lookAheadCol = thisCol + (xStep * (numCellsInALineToWin - 1));
     if (lookAheadCol > (numCols-1) || lookAheadCol < 0) return [];
     
-
     // check if we would extend beyond the grid on y-axis
     const thisRow = Math.floor(cell / numRows); // index
-    const lookAheadRow = thisRow + (y * (numCellsInALineToWin - 1));
+    const lookAheadRow = thisRow + (yStep * (numCellsInALineToWin - 1));
     if (lookAheadRow > (numRows-1) || lookAheadRow < 0) return [];
 
-    //console.log('lookAheadCol: ' + lookAheadCol + ', lookAheadRow: ' + lookAheadRow);
-
+    const found = [cell]; // array to store the matches
     let thisCell = cell;
     for (let i = 0; i < (numCellsInALineToWin - 1); i++) {
 
       // calc index of next cell we need to check
-      thisCell += (x * 1) + (y * numCols);
-      //console.log('check cell: ' + thisCell);
-      if (squares[thisCell] === v) {
+      thisCell += (xStep * 1) + (yStep * numCols);
+      if (squares[thisCell] === squares[cell]) {
         found.push(thisCell);
       } else {
         return [];
