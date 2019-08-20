@@ -1,40 +1,40 @@
 .score-board {
-	margin: 0 auto 0 auto;
-	background-color: #f0f0f0;
-	display: grid;
-	grid-template-columns: auto auto;
+  margin: 0 auto 0 auto;
+  background-color: #f0f0f0;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: center;
-	grid-gap: 20px;
-	max-width: 250px; 
+  grid-gap: 20px;
+  max-width: 250px; 
 }
 
 .score-board span:nth-of-type(2){
-	margin: 0 0 0 10px;
-	font-weight: bold;
+  margin: 0 0 0 10px;
+  font-weight: bold;
 }
 
 .score-board .winner {
-	/*background-color: lightgreen;
-	transition: background-color .5s .1s;*/
+  /*background-color: lightgreen;
+  transition: background-color .5s .1s;*/
 }
 
 .score-board .player {
-	border: solid 1px #999;
-	border-radius: 3px;
-	overflow: hidden;
+  border: solid 1px #999;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .score-board .player div {
-	padding: 5px 20px 5px 20px;
-	text-align: center;
+  padding: 5px 20px 5px 20px;
+  text-align: center;
 }
 
 .score-board .player div:nth-child(1) {
-	font-weight: bold;
-	justify-content: auto;
-	font-size: 20px;
+  font-weight: bold;
+  justify-content: auto;
+  font-size: 20px;
 }
 
 .score-board .player div:nth-child(2) {
-	background-color: #fff;
+  background-color: #fff;
 }

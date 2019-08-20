@@ -4,21 +4,21 @@ import './Button.css';
 
 export default class Button extends React.Component {
 
-	render() {
+  render() {
 
-	  let className = 'btn';
-		if (!this.props.visible) {
-			className += ' hidden';
-		}
+    let className = 'btn';
+    if (!this.props.visible) {
+      className += ' hidden';
+    }
 
-		return (
-		  <button 
-		  	className={this.props.className + ' ' + className}
-		  	onClick={this.props.onClick}>
-		    {this.props.value}
-		  </button>
-		);
+    return (
+      <button 
+        className={this.props.className + ' ' + className}
+        onClick={this.props.onClick}>
+        {this.props.value}
+      </button>
+    );
 
-	}
-	
+  }
+  
 }

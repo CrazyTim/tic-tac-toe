@@ -1,5 +1,5 @@
 .square {
-	width: 50px;
+  width: 50px;
   height: 50px;
   background: #fff;
   border: 1px solid #999;
@@ -19,14 +19,14 @@
 }
 
 .square.winner {
-	background-color: lightgreen;
-	transition: all 0.2s ease-out;
+  background-color: lightgreen;
+  transition: all 0.2s ease-out;
 }
 
 .square.disabled {
-	cursor: default;
+  cursor: default;
 }
 
 .square:hover:not(.disabled) {
-	background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }

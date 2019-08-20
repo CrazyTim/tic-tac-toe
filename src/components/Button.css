@@ -1,17 +1,17 @@
 .btn {
-	background: none;
-	background-color: lightgrey;
-	padding: 10px 20px;
-	border: none;
-	box-sizing: border-box;
-	cursor: pointer;
-	border-radius: 2px;
+  background: none;
+  background-color: lightgrey;
+  padding: 10px 20px;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 2px;
 }
 
 .btn:hover {
-	background-color: #c0c0c0;
+  background-color: #c0c0c0;
 }
 
 .btn.hidden {
-	display: none;
+  display: none;
 }
