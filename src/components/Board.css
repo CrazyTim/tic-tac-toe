@@ -15,3 +15,37 @@
   content: "";
   display: table;
 }
+
+.square {
+  width: 58px;
+  height: 58px;
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.square:hover {
+  background-color: #f0f0f0;
+}
+
+.square.disabled:hover {
+  background-color: #fff;
+}
+
+.square.winner,
+.square.winner:hover {
+  background-color: lightgreen;
+}

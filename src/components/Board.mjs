@@ -1,20 +1,25 @@
 import React from 'react';
 
-import Square from './Square.mjs';
+import Button from './Button.mjs';
 import './Board.css';
 
 export default class Board extends React.Component {
 
   createSquare(i) {
 
+    let className = 'square';
+    if (this.props.winningSquares.includes(i)) {
+      className += ' winner';
+    }
+
     return (
-      <Square
+      <Button 
         key={i}
-        value={this.props.squares[i]} 
+        className={className}
         onClick={() => this.props.onClick(i)}
-        winner={this.props.winningSquares.includes(i)}
-        gameOver={this.props.winningSquares.length>0}
-      />
+        disabled={this.props.winningSquares.length > 0 || this.props.squares[i]}
+        value={this.props.squares[i]}>
+      </Button>
     );
     
   }
