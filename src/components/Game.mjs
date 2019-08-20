@@ -11,8 +11,8 @@ export default class Game extends React.Component {
 
 		super(props);
 
-		const numRows = 4;
-		const numCols = 4;
+		const numRows = 3;
+		const numCols = 3;
 
 		this.state = {
 			settings: {
