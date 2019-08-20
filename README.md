@@ -19,9 +19,7 @@ npm start
 
 - Fancier CSS
 - Button to reset the board and play again
-- Allow for a variable number of rows/columns
-- Allow for a variable number of symbols you need to get in a line to win
-- A new win algorithm
+- A new win algorithm that allows for any number of rows/columns, and any number of symbols that you need to get in a line to win (changing it will break the game, but its fun to see it work).
 - Show each player's running score
 - Highlight the winning squares
 - Display a message about the result being a draw
