@@ -5,7 +5,7 @@ import './Board.css';
 
 export default class Board extends React.Component {
 
-  renderSquare(i) {
+  createSquare(i) {
 
     return (
     	<Square
@@ -25,12 +25,12 @@ export default class Board extends React.Component {
 
   	// draw dynamic number of rows and columns
   	for (let i=0; i<this.props.numRows; i++) {
-			const squares = Array(this.props.numCols);
+			const row = [];
 			const startIndex = (i * this.props.numCols);
 			for (let j=0; j<this.props.numCols; j++) {
-				squares.push(this.renderSquare(startIndex+j));
+				row.push(this.createSquare(startIndex+j));
 			}
-  		rows.push(<div key={i} className="board-row">{squares}</div>)
+  		rows.push(<div key={i} className="board-row">{row}</div>)
   	}
 
     return (
