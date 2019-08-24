@@ -16,7 +16,7 @@ export default class Game extends React.Component {
     const numCols = 3;
 
     this.defaultState = {
-      turns: [{
+      history: [{
         squares: Array(numRows * numCols).fill(null),
       }],
       currentTurn: 0,
@@ -45,16 +45,13 @@ export default class Game extends React.Component {
     this.setState( clone(this.defaultState) );
   }
 
-  getTurns() {
-    return this.state.turns.slice(0, this.state.currentTurn + 1);
-  }
-
   undo(step) {
 
     const currentTurn = this.state.currentTurn - step;
-    const score = clone(this.state.score);
 
     if (currentTurn < 0) return; // can't go back any further
+
+    const score = clone(this.state.score);
 
     if (this.state.winner) {
       score[this.state.winner] -= 1;
@@ -72,9 +69,9 @@ export default class Game extends React.Component {
   }
 
   handleClick(i) {
-
-    const prevTurns = this.getTurns()
-    const squares = clone(prevTurns[this.state.currentTurn].squares);
+    // get history from the beginning until currentTurn
+    const currentHistory = this.state.history.slice(0, this.state.currentTurn + 1);
+    const squares = clone(currentHistory[this.state.currentTurn].squares);
 
     // ignore a click if there is a winner or if this square has already been filled
     if (this.state.winner || squares[i]) {
@@ -105,14 +102,14 @@ export default class Game extends React.Component {
       draw = squares.every((i) => {return i != null});
     }
 
-    const turns = prevTurns.concat([{
+    const history = currentHistory.concat([{
         squares: squares,
       }])
 
     const currentTurn = this.state.currentTurn + 1;
 
     this.setState({
-      turns: turns,
+      history: history,
       currentTurn: currentTurn,
       xIsNext: !this.state.xIsNext,
       winner: winner,
@@ -143,7 +140,7 @@ export default class Game extends React.Component {
           />
 
           <Board 
-            squares={this.getTurns()[this.state.currentTurn].squares}
+            squares={this.state.history[this.state.currentTurn].squares}
             onClick={(i) => this.handleClick(i)}
             winningSquares={this.state.winningSquares}
             numRows={this.state.settings.numRows}
