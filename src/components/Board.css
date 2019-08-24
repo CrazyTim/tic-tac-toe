@@ -1,19 +1,17 @@
 .board {
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 5px;
   border: solid 1px #999;
   margin-top: 20px !important;
   margin-bottom: 20px !important;
 }
 
-.board > div {
-  margin:-1px;
+.board .board-row:last-of-type .square {
+  border-bottom:0; /* hack to hide double border on bottom side of board */
 }
 
-.board .board-row:after {
-  clear: both;
-  content: "";
-  display: table;
+.square:first-of-type {
+  border-left:0; /* hack to hide double border on left side of board */
 }
 
 .square {
