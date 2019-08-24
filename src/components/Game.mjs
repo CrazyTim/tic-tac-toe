@@ -14,19 +14,10 @@ export default class Game extends React.Component {
     const numRows = 3;
     const numCols = 3;
 
-    this.state = {
-      settings: {
-        numRows: numRows,
-        numCols: numCols,
-        numCellsInALineToWin: 3,
-      },
+    this.defaultState = {
       turns: [{
         squares: Array(numRows * numCols).fill(null),
       }],
-      score: {
-        'X':0, 
-        'O':0,
-      },
       currentTurn: 0,
       xIsNext: true,
       winner: null,
@@ -34,21 +25,23 @@ export default class Game extends React.Component {
       draw: false,
     };
 
+    this.state = {
+      settings: {
+        numRows: numRows,
+        numCols: numCols,
+        numCellsInALineToWin: 3,
+      },
+      score: {
+        'X':0, 
+        'O':0,
+      },
+      ...this.defaultState,
+    };
+
   }
 
   resetBoard() {
-
-    this.setState({
-      turns: [{
-        squares: Array(this.state.settings.numRows * this.state.settings.numCols).fill(null),
-      }],
-      currentTurn: 0,
-      xIsNext: true,
-      winner: null,
-      winningSquares: [],
-      draw: false,
-    });
-    
+    this.setState( {...this.defaultState} );
   }
 
   getTurns() {
