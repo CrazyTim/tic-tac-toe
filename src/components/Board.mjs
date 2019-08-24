@@ -26,7 +26,7 @@ export default class Board extends React.Component {
 
   render() {
 
-    const rows = Array(this.props.numRows);
+    const rows = [];
 
     // draw dynamic number of rows and columns
     for (let i=0; i<this.props.numRows; i++) {
