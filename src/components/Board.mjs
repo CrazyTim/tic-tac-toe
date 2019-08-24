@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import Button from './Button.mjs';
 import './Board.css';
@@ -7,10 +8,9 @@ export default class Board extends React.Component {
 
   createSquare(i) {
 
-    let className = 'square';
-    if (this.props.winningSquares.includes(i)) {
-      className += ' winner';
-    }
+    let className = classNames('square', {
+      'winner': this.props.winningSquares.includes(i),
+    });
 
     return (
       <Button 
@@ -35,11 +35,11 @@ export default class Board extends React.Component {
       for (let j=0; j<this.props.numCols; j++) {
         row.push(this.createSquare(startIndex+j));
       }
-      rows.push(<div key={i} className="board-row">{row}</div>)
+      rows.push(<div key={i} className='board-row'>{row}</div>)
     }
 
     return (
-      <div className="board"><div>{rows}</div></div>
+      <div className='board'><div>{rows}</div></div>
     );
 
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './Button.css';
 
@@ -6,19 +7,10 @@ export default class Button extends React.Component {
 
   render() {
 
-    let className = 'btn';
-
-    if (this.props.className !== undefined) {
-      className += ' ' + this.props.className;
-    }
-
-    if (this.props.visible !== undefined && !this.props.visible) {
-      className += ' hidden';
-    }
-
-    if (this.props.disabled) {
-      className += ' disabled';
-    }
+    let className = classNames('btn', this.props.className, {
+      'hidden': this.props.hidden,
+      'disabled': this.props.disabled,
+    });
 
     return (
       <button 

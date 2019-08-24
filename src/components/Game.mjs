@@ -1,10 +1,10 @@
 import React from 'react';
 
+import {clone} from './../util/util.mjs'
 import Board from './Board.mjs';
 import Button from './Button.mjs';
 import Scoreboard from './Scoreboard.mjs';
 import './Game.css';
-import {clone} from './../util/util.mjs'
 
 export default class Game extends React.Component {
 
@@ -127,7 +127,7 @@ export default class Game extends React.Component {
 
     let status;
     if (this.state.draw) {
-      status = "This game is a draw!";
+      status = 'This game is a draw!';
     } else if (this.state.winner){
       status = 'Player ' + this.state.winner + ' has won!';
     } else {
@@ -135,8 +135,8 @@ export default class Game extends React.Component {
     }
 
     return (
-      <div className="game-wrapper">
-        <div className="game">
+      <div className='game-wrapper'>
+        <div className='game'>
 
           <Scoreboard
             score={this.state.score}
@@ -151,20 +151,20 @@ export default class Game extends React.Component {
             score={this.state.score}
           />
 
-          <div className="status">{status}</div>
+          <div className='status'>{status}</div>
 
           <Button 
-            value="Undo" 
-            className="btn-undo"
+            value='Undo' 
+            className='btn-undo'
             onClick={() => this.undo(1)}
-            visible={this.state.currentTurn !== 0}
+            hidden={this.state.currentTurn === 0}
           />
 
           <Button 
-            value="Play Again" 
-            className="btn-play-again"
+            value='Play Again' 
+            className='btn-play-again'
             onClick={() => this.resetBoard()}
-            visible={(this.state.winner || this.state.draw)}
+            hidden={!(this.state.winner || this.state.draw)}
           />
 
         </div> 

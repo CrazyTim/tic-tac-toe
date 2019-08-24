@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './Scoreboard.css';
 
@@ -6,21 +7,21 @@ export default class Scoreboard extends React.Component {
 
   render() {
     
-    let className1 = 'player';
-    let className2 = 'player';
-    if (this.props.score.X > this.props.score.O) {
-      className1 += ' winner';
-    } else if (this.props.score.X < this.props.score.O) {
-      className2 += ' winner';
-    } 
+    let classNameX = classNames('player', {
+      'winner': this.props.score.X > this.props.score.O,
+    });
+
+    let classNameY = classNames('player', {
+      'winner': this.props.score.X < this.props.score.O,
+    });
 
     return (
-      <div className="score-board">
-        <div className={className1}>
+      <div className='score-board'>
+        <div className={classNameX}>
           <div>X</div>
           <div>{this.props.score.X}</div>
         </div>
-        <div className={className2}>
+        <div className={classNameY}>
           <div>O</div>
           <div>{this.props.score.O}</div>
         </div>
