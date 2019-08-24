@@ -8,7 +8,7 @@ export default class Board extends React.Component {
 
   createSquare(i) {
 
-    let className = classNames('square', {
+    const className = classNames('square', {
       'winner': this.props.winningSquares.includes(i),
     });
 

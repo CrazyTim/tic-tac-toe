@@ -7,11 +7,11 @@ export default class Scoreboard extends React.Component {
 
   render() {
     
-    let classNameX = classNames('player', {
+    const classNameX = classNames('player', {
       'winner': this.props.score.X > this.props.score.O,
     });
 
-    let classNameY = classNames('player', {
+    const classNameY = classNames('player', {
       'winner': this.props.score.X < this.props.score.O,
     });
 

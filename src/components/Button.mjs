@@ -7,7 +7,7 @@ export default class Button extends React.Component {
 
   render() {
 
-    let className = classNames('btn', this.props.className, {
+    const className = classNames('btn', this.props.className, {
       'hidden': this.props.hidden,
       'disabled': this.props.disabled,
     });
