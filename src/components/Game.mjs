@@ -4,6 +4,7 @@ import Board from './Board.mjs';
 import Button from './Button.mjs';
 import Scoreboard from './Scoreboard.mjs';
 import './Game.css';
+import {clone} from './../util/util.mjs'
 
 export default class Game extends React.Component {
 
@@ -41,7 +42,7 @@ export default class Game extends React.Component {
   }
 
   resetBoard() {
-    this.setState( {...this.defaultState} );
+    this.setState( clone(this.defaultState) );
   }
 
   getTurns() {
@@ -51,7 +52,7 @@ export default class Game extends React.Component {
   undo(step) {
 
     const currentTurn = this.state.currentTurn - step;
-    const score = Object.assign({}, this.state.score); // clone object
+    const score = clone(this.state.score);
 
     if (currentTurn < 0) return; // can't go back any further
 
@@ -73,7 +74,7 @@ export default class Game extends React.Component {
   handleClick(i) {
 
     const prevTurns = this.getTurns()
-    const squares = prevTurns[this.state.currentTurn].squares.slice();
+    const squares = clone(prevTurns[this.state.currentTurn].squares);
 
     // ignore a click if there is a winner or if this square has already been filled
     if (this.state.winner || squares[i]) {
@@ -83,7 +84,7 @@ export default class Game extends React.Component {
     squares[i] = this.state.xIsNext ? 'X' : 'O';
 
     // check for a winner
-    let score = Object.assign({}, this.state.score);
+    let score = clone(this.state.score);
     let winner = null;
     let winningSquares;
     for (let i = 0; i < squares.length - 1; i++) {
