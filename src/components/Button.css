@@ -6,16 +6,19 @@
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 2px;
+
 }
 
-.btn:hover {
+.btn.disabled {
+  cursor: default;
+  outline: 0;
+  color: grey;
+}
+
+.btn:not(.disabled):hover {
   background-color: #c0c0c0;
 }
 
 .btn.hidden {
   display: none;
-}
-
-.btn.disabled {
-  cursor: default;
 }

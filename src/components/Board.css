@@ -35,12 +35,16 @@
   outline: none;
 }
 
-.square:hover {
+.square:not(.disabled):hover {
   background-color: #f0f0f0;
 }
 
 .square.disabled:hover {
   background-color: #fff;
+}
+
+.square.disabled {
+  color: black;
 }
 
 .square.winner,

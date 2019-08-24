@@ -13,3 +13,10 @@ export function clone(x) {
   }
   
 }
+
+export function isNumber(s) {
+  if (typeof s !== "string" && typeof s !== "number") return false; // only process numbers and strings
+  if (s === 0) return true;
+  // could also coerce to string: str = ""+str
+  return !isNaN(s) && !isNaN(parseFloat(s));
+}

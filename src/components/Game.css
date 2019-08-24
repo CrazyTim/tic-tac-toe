@@ -30,3 +30,51 @@ body {
 .game > * {
   margin: 8px;  /* gap between each item */
 }
+
+.settings-panel {
+  width: 100%;
+  border: 1px solid #999;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.settings-panel > label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.settings-panel > .btn {
+  margin-top: 10px;
+}
+
+.textbox {
+  align-self: start;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 4px 0;
+}
+
+.textbox .err {
+  font-size: 14px;
+  color: #c30404;
+  font-weight: bold;
+  max-width: 150px;
+  vertical-align: middle ;
+}
+
+.textbox label {
+}
+
+.textbox input {
+  width: 25px;
+  font-size: 16px;
+  padding: 2px 3px;
+  text-align: center;
+  max-height: 26px;
+  margin: 0 10px;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 
-import {clone} from './../util/util.mjs'
+import {clone, isNumber} from './../util/util.mjs'
 import Board from './Board.mjs';
 import Button from './Button.mjs';
 import Scoreboard from './Scoreboard.mjs';
+import Textbox from './Textbox.mjs';
 import './Game.css';
 
 export default class Game extends React.Component {
@@ -12,12 +13,29 @@ export default class Game extends React.Component {
 
     super(props);
 
-    const numRows = 3;
-    const numCols = 3;
+    this.state = {
+      settings: {
+        numRows: 3,
+        numCols: 3,
+        numCellsInALineToWin: 3,
+      },
+      score: {
+        X: 0, 
+        O: 0,
+      }
+    };
 
-    this.defaultState = {
+    this.defaultInputState = {
+      inputs: {
+        txtNumRows: this.state.settings.numRows,
+        txtNumCols: this.state.settings.numCols,
+        txtNumCells: this.state.settings.numCellsInALineToWin,
+      }
+    }
+
+    this.defaultGameState = {
       history: [{
-        squares: Array(numRows * numCols).fill(null),
+        squares: Array(this.state.settings.numRows * this.state.settings.numCols).fill(null),
       }],
       currentTurn: 0,
       xIsNext: true,
@@ -26,23 +44,64 @@ export default class Game extends React.Component {
       draw: false,
     };
 
-    this.state = {
-      settings: {
-        numRows: numRows,
-        numCols: numCols,
-        numCellsInALineToWin: 3,
-      },
-      score: {
-        'X':0, 
-        'O':0,
-      },
-      ...this.defaultState,
-    };
+    this.state = {...this.state, ...this.defaultInputState, ...this.defaultGameState};
 
   }
 
+  handleClick_btnSaveSettings(event) {
+
+    const settings = clone(this.state.settings);
+    settings.numRows = parseInt(this.state.inputs.txtNumRows);
+    settings.numCols = parseInt(this.state.inputs.txtNumCols);
+    settings.numCellsInALineToWin = parseInt(this.state.inputs.txtNumCells);
+
+    this.setState({settings}, ()=> {
+      this.resetBoard();
+    });
+  }
+
+  handleChange_txtNumRows(event) {
+    const inputs = clone(this.state.inputs);
+    inputs.txtNumRows = event.target.value;
+    this.setState({inputs});
+  }
+
+  handleChange_txtNumCols(event) {
+    const inputs = clone(this.state.inputs);
+    inputs.txtNumCols = event.target.value;
+    this.setState({inputs});
+  }
+
+  handleChange_txtNumCells(event) {
+    const inputs = clone(this.state.inputs);
+    inputs.txtNumCells = event.target.value;
+    this.setState({inputs});
+  }
+
+  validateNumber(value) {
+    if (!isNumber(value) || value < 3 || value > 10) return 'must be a number between 3 and 10'
+    return null;
+  }
+
+  disable_btnSaveSettings() {
+    // validate inputs
+    const s = this.state
+    return (this.validateNumber(s.inputs.txtNumRows) ||
+            this.validateNumber(s.inputs.txtNumCols) ||
+            this.validateNumber(s.inputs.txtNumCells) )
+           || (s.inputs.txtNumRows == s.settings.numRows &&
+              s.inputs.txtNumCols == s.settings.numCols &&
+              s.inputs.txtNumCells == s.settings.numCellsInALineToWin)
+  }
+
   resetBoard() {
-    this.setState( clone(this.defaultState) );
+
+    this.defaultGameState.history = [{
+        squares: Array(this.state.settings.numRows * this.state.settings.numCols).fill(null),
+    }];
+
+    this.setState( clone(this.defaultGameState) );
+
   }
 
   undo(step) {
@@ -84,7 +143,7 @@ export default class Game extends React.Component {
     let score = clone(this.state.score);
     let winner = null;
     let winningSquares;
-    for (let i = 0; i < squares.length - 1; i++) {
+    for (let i=0; i<(squares.length-1); i++) {
 
       winningSquares = this.checkWin(squares, this.state.settings.numRows, this.state.settings.numCols, i, this.state.settings.numCellsInALineToWin);
       
@@ -140,28 +199,77 @@ export default class Game extends React.Component {
           />
 
           <Board 
-            squares={this.state.history[this.state.currentTurn].squares}
             onClick={(i) => this.handleClick(i)}
+            squares={this.state.history[this.state.currentTurn].squares}
             winningSquares={this.state.winningSquares}
             numRows={this.state.settings.numRows}
             numCols={this.state.settings.numCols}
-            score={this.state.score}
           />
 
           <div className='status'>{status}</div>
 
           <Button 
-            value='Undo' 
             className='btn-undo'
             onClick={() => this.undo(1)}
             hidden={this.state.currentTurn === 0}
+            value='Undo' 
           />
 
           <Button 
-            value='Play Again' 
             className='btn-play-again'
             onClick={() => this.resetBoard()}
             hidden={!(this.state.winner || this.state.draw)}
+            value='Play Again'
+          />
+
+          <div className='settings-panel'>
+
+            <label>Settings:</label>
+
+            <Textbox
+              className='txt-num-rows'
+              onChange={(e) => this.handleChange_txtNumRows(e)}
+              validate={this.validateNumber}
+              label='Rows:'
+              value={this.state.inputs.txtNumRows}
+            />
+
+            <Textbox
+              className='txt-num-cols'
+              onChange={(e) => this.handleChange_txtNumCols(e)}
+              validate={this.validateNumber}
+              label='Columns:'
+              value={this.state.inputs.txtNumCols}
+            />
+
+            <Textbox
+              className='txt-num-cells'
+              onChange={(e) => this.handleChange_txtNumCells(e)}
+              validate={this.validateNumber}
+              label='Cells in a line to win:'
+              value={this.state.inputs.txtNumCells}
+            />
+
+            <Button 
+              className='btn-save-settings'
+              onClick={(e) => this.handleClick_btnSaveSettings(e)}
+              disabled={this.disable_btnSaveSettings()}
+              value='Save'
+            />
+
+          </div>
+
+          <Button
+            className='btn-play-again'
+            onClick={() => {
+              //console.log(this.state.winningSquares);
+              console.log(this.state.settings);
+              //console.log(this.state.history[0]);
+              //console.log(this.defaultState.history[0]);
+              console.log(this.state.inputs);
+            }}
+            hidden
+            value='log' 
           />
 
         </div> 
@@ -188,7 +296,7 @@ export default class Game extends React.Component {
     ];
 
     // check in each direction for a match
-    for (let i = 0; i < directions.length; i++) {
+    for (let i=0; i<directions.length; i++) {
       const xStep = directions[i][1];
       const yStep = directions[i][2];
       const winningSquares = this.check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToWin);
@@ -220,7 +328,7 @@ export default class Game extends React.Component {
 
     const found = [cell]; // array to store the matches
     let thisCell = cell;
-    for (let i = 0; i < (numCellsInALineToWin - 1); i++) {
+    for (let i=0; i<(numCellsInALineToWin-1); i++) {
 
       // calc index of next cell we need to check
       thisCell += (xStep * 1) + (yStep * numCols);
