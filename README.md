@@ -9,11 +9,9 @@ View the [live version here](https://crazytim.github.io/react-tutorial).
 
 ## Getting Started
 
-Install Git and Node.js, then run:
+Install Node.js, clone this repo, then run:
 
 ```
-git clone https://github.com/CrazyTim/reactjs-tutorial
-cd reactjs-tutorial
 npm install
 npm start
 ```
