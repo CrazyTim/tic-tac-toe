@@ -52,6 +52,22 @@ body {
   margin-top: 10px;
 }
 
+.settings-panel .wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+}
+
+.settings-panel .wrapper > label {
+  align-self: center;
+  justify-self: start;
+}
+
+.settings-panel .wrapper > *:not(label) {
+  align-self: center;
+  justify-self: end;
+}
+
 .textbox {
   align-self: start;
   display: flex;
@@ -78,4 +94,8 @@ body {
   text-align: center;
   max-height: 26px;
   margin: 0 10px;
+}
+
+button {
+  outline: none;
 }

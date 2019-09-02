@@ -227,32 +227,34 @@ export default class Game extends React.Component {
 
             <label>Settings:</label>
 
-            <InputStepper
-              className='txt-num-rows'
-              onClick={this.handleClick_txtNumRows.bind(this)}
-              maxValue={10}
-              minValue={3}
-              label='Rows:'
-              value={this.state.inputs.txtNumRows}
-            />
+            <div className='wrapper'>
+              <label>Rows:</label>
+              <InputStepper
+                className='txt-num-rows'
+                onClick={this.handleClick_txtNumRows.bind(this)}
+                maxValue={10}
+                minValue={3}
+                value={this.state.inputs.txtNumRows}
+              />
 
-            <InputStepper
-              className='txt-num-cols'
-              onClick={this.handleClick_txtNumCols.bind(this)}
-              maxValue={10}
-              minValue={3}
-              label='Columns:'
-              value={this.state.inputs.txtNumCols}
-            />
+              <label>Columns:</label>
+              <InputStepper
+                className='txt-num-cols'
+                onClick={this.handleClick_txtNumCols.bind(this)}
+                maxValue={10}
+                minValue={3}
+                value={this.state.inputs.txtNumCols}
+              />
 
-            <InputStepper
-              className='txt-num-cells'
-              onClick={this.handleClick_txtNumCells.bind(this)}
-              maxValue={Math.max(this.state.inputs.txtNumRows, this.state.inputs.txtNumCols)}
-              minValue={3}
-              label='Cells in a line to win:'
-              value={this.state.inputs.txtNumCells}
-            />
+              <label>Cells in a line to win:</label>
+              <InputStepper
+                className='txt-num-cells'
+                onClick={this.handleClick_txtNumCells.bind(this)}
+                maxValue={Math.max(this.state.inputs.txtNumRows, this.state.inputs.txtNumCols)}
+                minValue={3}
+                value={this.state.inputs.txtNumCells}
+              />
+            </div>
 
             <Button 
               className='btn-save-settings'
