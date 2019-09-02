@@ -62,12 +62,14 @@ export default class Game extends React.Component {
   handleClick_txtNumRows(increment) {
     const inputs = clone(this.state.inputs);
     inputs.txtNumRows += increment;
+    inputs.txtNumCells = Math.min(Math.max(inputs.txtNumRows, inputs.txtNumCols), inputs.txtNumCells); // ensure txtNumCells doesn't exceed number of rows/columns
     this.setState({inputs});
   }
 
   handleClick_txtNumCols(increment) {
     const inputs = clone(this.state.inputs);
     inputs.txtNumCols += increment;
+    inputs.txtNumCells = Math.min(Math.max(inputs.txtNumRows, inputs.txtNumCols), inputs.txtNumCells); // ensure txtNumCells doesn't exceed number of rows/columns
     this.setState({inputs});
   }
 
@@ -246,7 +248,7 @@ export default class Game extends React.Component {
             <InputStepper
               className='txt-num-cells'
               onClick={this.handleClick_txtNumCells.bind(this)}
-              maxValue={10}
+              maxValue={Math.max(this.state.inputs.txtNumRows, this.state.inputs.txtNumCols)}
               minValue={3}
               label='Cells in a line to win:'
               value={this.state.inputs.txtNumCells}
