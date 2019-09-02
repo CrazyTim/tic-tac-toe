@@ -4,7 +4,7 @@ import {clone, isNumber} from './../util/util.mjs'
 import Board from './Board.mjs';
 import Button from './Button.mjs';
 import Scoreboard from './Scoreboard.mjs';
-import Textbox from './Textbox.mjs';
+import InputStepper from './InputStepper.mjs';
 import './Game.css';
 
 export default class Game extends React.Component {
@@ -48,8 +48,7 @@ export default class Game extends React.Component {
 
   }
 
-  handleClick_btnSaveSettings(event) {
-
+  handleClick_btnSaveSettings() {
     const settings = clone(this.state.settings);
     settings.numRows = parseInt(this.state.inputs.txtNumRows);
     settings.numCols = parseInt(this.state.inputs.txtNumCols);
@@ -60,21 +59,21 @@ export default class Game extends React.Component {
     });
   }
 
-  handleChange_txtNumRows(event) {
+  handleClick_txtNumRows(increment) {
     const inputs = clone(this.state.inputs);
-    inputs.txtNumRows = event.target.value;
+    inputs.txtNumRows += increment;
     this.setState({inputs});
   }
 
-  handleChange_txtNumCols(event) {
+  handleClick_txtNumCols(increment) {
     const inputs = clone(this.state.inputs);
-    inputs.txtNumCols = event.target.value;
+    inputs.txtNumCols += increment;
     this.setState({inputs});
   }
 
-  handleChange_txtNumCells(event) {
+  handleClick_txtNumCells(increment) {
     const inputs = clone(this.state.inputs);
-    inputs.txtNumCells = event.target.value;
+    inputs.txtNumCells += increment;
     this.setState({inputs});
   }
 
@@ -89,9 +88,9 @@ export default class Game extends React.Component {
     return (this.validateNumber(s.inputs.txtNumRows) ||
             this.validateNumber(s.inputs.txtNumCols) ||
             this.validateNumber(s.inputs.txtNumCells) )
-           || (s.inputs.txtNumRows == s.settings.numRows &&
-              s.inputs.txtNumCols == s.settings.numCols &&
-              s.inputs.txtNumCells == s.settings.numCellsInALineToWin)
+           || (s.inputs.txtNumRows === s.settings.numRows &&
+              s.inputs.txtNumCols === s.settings.numCols &&
+              s.inputs.txtNumCells === s.settings.numCellsInALineToWin)
   }
 
   resetBoard() {
@@ -127,7 +126,7 @@ export default class Game extends React.Component {
 
   }
 
-  handleClick(i) {
+  handleClick_btnSquare(i) {
     // get history from the beginning until currentTurn
     const currentHistory = this.state.history.slice(0, this.state.currentTurn + 1);
     const squares = clone(currentHistory[this.state.currentTurn].squares);
@@ -199,7 +198,7 @@ export default class Game extends React.Component {
           />
 
           <Board 
-            onClick={(i) => this.handleClick(i)}
+            onClick={this.handleClick_btnSquare.bind(this)}
             squares={this.state.history[this.state.currentTurn].squares}
             winningSquares={this.state.winningSquares}
             numRows={this.state.settings.numRows}
@@ -210,14 +209,14 @@ export default class Game extends React.Component {
 
           <Button 
             className='btn-undo'
-            onClick={() => this.undo(1)}
+            onClick={this.undo.bind(this, 1)}
             hidden={this.state.currentTurn === 0}
             value='Undo' 
           />
 
           <Button 
             className='btn-play-again'
-            onClick={() => this.resetBoard()}
+            onClick={this.resetBoard.bind(this)}
             hidden={!(this.state.winner || this.state.draw)}
             value='Play Again'
           />
@@ -226,33 +225,36 @@ export default class Game extends React.Component {
 
             <label>Settings:</label>
 
-            <Textbox
+            <InputStepper
               className='txt-num-rows'
-              onChange={(e) => this.handleChange_txtNumRows(e)}
-              validate={this.validateNumber}
+              onClick={this.handleClick_txtNumRows.bind(this)}
+              maxValue={10}
+              minValue={3}
               label='Rows:'
               value={this.state.inputs.txtNumRows}
             />
 
-            <Textbox
+            <InputStepper
               className='txt-num-cols'
-              onChange={(e) => this.handleChange_txtNumCols(e)}
-              validate={this.validateNumber}
+              onClick={this.handleClick_txtNumCols.bind(this)}
+              maxValue={10}
+              minValue={3}
               label='Columns:'
               value={this.state.inputs.txtNumCols}
             />
 
-            <Textbox
+            <InputStepper
               className='txt-num-cells'
-              onChange={(e) => this.handleChange_txtNumCells(e)}
-              validate={this.validateNumber}
+              onClick={this.handleClick_txtNumCells.bind(this)}
+              maxValue={10}
+              minValue={3}
               label='Cells in a line to win:'
               value={this.state.inputs.txtNumCells}
             />
 
             <Button 
               className='btn-save-settings'
-              onClick={(e) => this.handleClick_btnSaveSettings(e)}
+              onClick={this.handleClick_btnSaveSettings.bind(this)}
               disabled={this.disable_btnSaveSettings()}
               value='Save'
             />

@@ -1,0 +1,51 @@
+.input-stepper {
+  align-self: start;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px 0;
+}
+
+.input-stepper label:nth-of-type(2) {
+  padding: 3px 5px 0 5px;
+  text-align: center;
+  height: 26px;
+  margin: 0 0;
+  border: 1px solid #999;
+  border-right: 0;
+  border-left: 0;
+  box-sizing: border-box;
+  z-index: 0;
+  outline: none;
+}
+
+.input-stepper button {
+  height: 26px;
+  width: 26px;
+  padding: 0;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  background-color: white;
+  font-family: monospace;
+  font-size: 22px;
+  line-height: 0;
+  overflow: hidden;
+  z-index: 1;
+  padding-bottom: 2px;
+  border-radius: 5px
+}
+
+.input-stepper button:first-of-type {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  margin-left: 10px;
+}
+
+.input-stepper button:last-of-type {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+  margin-right: 10px;
+}
+

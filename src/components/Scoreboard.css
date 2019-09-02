@@ -27,6 +27,7 @@
 .score-board .player div {
   padding: 5px 20px 5px 20px;
   text-align: center;
+  font-size: 20px;
 }
 
 .score-board .player div:nth-child(1) {

@@ -2,6 +2,8 @@
   box-sizing: content-box;
   user-select: none;
   cursor: default;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
 body {
@@ -22,7 +24,6 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0;
-  font: 16px sans-serif;
   border-radius: 2px;
   padding: 20px; /* gap between each item */
 }
