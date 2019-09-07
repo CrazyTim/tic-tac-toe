@@ -85,14 +85,19 @@ export default class Game extends React.Component {
   }
 
   disable_btnSaveSettings() {
-    // validate inputs
+   
     const s = this.state
-    return (this.validateNumber(s.inputs.txtNumRows) ||
-            this.validateNumber(s.inputs.txtNumCols) ||
-            this.validateNumber(s.inputs.txtNumCells) )
-           || (s.inputs.txtNumRows === s.settings.numRows &&
-              s.inputs.txtNumCols === s.settings.numCols &&
-              s.inputs.txtNumCells === s.settings.numCellsInALineToWin)
+
+    // detect if state will change
+    const changed = (s.inputs.txtNumRows !== s.settings.numRows ||
+                     s.inputs.txtNumCols !== s.settings.numCols ||
+                     s.inputs.txtNumCells !== s.settings.numCellsInALineToWin);
+     
+     // validate inputs
+    const valid = true;
+
+    return !(changed && valid);
+
   }
 
   resetBoard() {
