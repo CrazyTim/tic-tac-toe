@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {clone, isNumber} from './../utils/utils.mjs'
-import Board from './Board.mjs';
-import Button from './Button.mjs';
-import Scoreboard from './Scoreboard.mjs';
-import InputStepper from './InputStepper.mjs';
-import './Game.css';
+import Board from './../components/Board.mjs';
+import Button from './../components/Button.mjs';
+import Scoreboard from './../components/Scoreboard.mjs';
+import InputStepper from './../components/InputStepper.mjs';
+import './App.css';
 
-export default class Game extends React.Component {
+export default class App extends React.Component {
 
   constructor(props) {
 

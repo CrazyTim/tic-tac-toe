@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Game from './components/Game.mjs';
+import App from './app/App.mjs';
 
 // ========================================
 
 ReactDOM.render(
-  <Game />,
+  <App/>,
   document.getElementById('root')
 );
