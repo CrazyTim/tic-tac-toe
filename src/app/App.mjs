@@ -14,7 +14,7 @@ export default class App extends React.Component {
 
     super(props);
 
-    this.state = {
+    const defaultState = {
       settings: {
         numRows: 3,
         numCols: 3,
@@ -26,17 +26,17 @@ export default class App extends React.Component {
       }
     };
 
-    this.defaultInputState = {
+    const defaultInputState = {
       inputs: {
-        txtNumRows: this.state.settings.numRows,
-        txtNumCols: this.state.settings.numCols,
-        txtNumCells: this.state.settings.numCellsInALineToWin,
+        txtNumRows: defaultState.settings.numRows,
+        txtNumCols: defaultState.settings.numCols,
+        txtNumCells: defaultState.settings.numCellsInALineToWin,
       }
     }
 
-    this.defaultGameState = {
+    const defaultGameState = {
       history: [{
-        squares: Array(this.state.settings.numRows * this.state.settings.numCols).fill(null),
+        squares: Array(defaultState.settings.numRows * defaultState.settings.numCols).fill(null),
       }],
       currentTurn: 0,
       xIsNext: true,
@@ -45,19 +45,32 @@ export default class App extends React.Component {
       draw: false,
     };
 
-    this.state = {...this.state, ...this.defaultInputState, ...this.defaultGameState};
+    this.state = {...defaultState, 
+                  ...defaultInputState, 
+                  ...defaultGameState,
+                  defaultGameState};
 
   }
 
   handleClick_btnSaveSettings() {
+
     const settings = clone(this.state.settings);
     settings.numRows = parseInt(this.state.inputs.txtNumRows);
     settings.numCols = parseInt(this.state.inputs.txtNumCols);
     settings.numCellsInALineToWin = parseInt(this.state.inputs.txtNumCells);
 
-    this.setState({settings}, ()=> {
-      this.resetBoard();
-    });
+    const defaultGameState = clone(this.state.defaultGameState);
+    defaultGameState.history = [{
+        squares: Array(settings.numRows * settings.numCols).fill(null),
+    }];
+
+    this.setState(
+      {settings, defaultGameState}, 
+      ()=> {
+        this.resetBoard();
+      }
+    );
+
   }
 
   handleClick_txtNumRows(increment) {
@@ -102,13 +115,7 @@ export default class App extends React.Component {
   }
 
   resetBoard() {
-
-    this.defaultGameState.history = [{
-        squares: Array(this.state.settings.numRows * this.state.settings.numCols).fill(null),
-    }];
-
-    this.setState( clone(this.defaultGameState) );
-
+    this.setState( clone(this.state.defaultGameState) );
   }
 
   undo(step) {
