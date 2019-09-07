@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {clone, isNumber} from './../util/util.mjs'
+import {clone, isNumber} from './../utils/utils.mjs'
 import Board from './Board.mjs';
 import Button from './Button.mjs';
 import Scoreboard from './Scoreboard.mjs';

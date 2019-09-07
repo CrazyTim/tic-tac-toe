@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import {isNumber} from './../util/util.mjs'
+import {isNumber} from './../utils/utils.mjs'
 import './Textbox.css';
 
 export default class Textbox extends React.Component {
