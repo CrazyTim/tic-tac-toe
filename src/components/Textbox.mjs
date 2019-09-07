@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import {isNumber} from './../util/util.mjs'
 import './Textbox.css';
@@ -7,6 +8,8 @@ import './Textbox.css';
 export default class Textbox extends React.Component {
   
   render() {
+
+    const className = classNames('textbox', this.props.className);
 
     let errMsg;
     if (this.props.validate) {
@@ -17,8 +20,7 @@ export default class Textbox extends React.Component {
     }
     
     return (
-      <div className='textbox'>
-        <label>{this.props.label}</label>
+      <div className={className}>
         <input
           type="text" 
           value={this.props.value} 
@@ -30,3 +32,11 @@ export default class Textbox extends React.Component {
   }
 
 }
+
+// apply typechecking for dev mode
+Textbox.propTypes = {
+  className: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  validate: PropTypes.func,
+};

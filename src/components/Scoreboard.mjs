@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import './Scoreboard.css';
 
@@ -31,3 +32,8 @@ export default class Scoreboard extends React.Component {
   }
 
 }
+
+// apply typechecking for dev mode
+Scoreboard.propTypes = {
+  score: PropTypes.object,
+};

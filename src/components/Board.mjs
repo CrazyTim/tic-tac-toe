@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import Button from './Button.mjs';
 import './Board.css';
@@ -45,3 +46,13 @@ export default class Board extends React.Component {
   }
 
 }
+
+// apply typechecking for dev mode
+Board.propTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  numRows: PropTypes.number,
+  numCols: PropTypes.number,
+  winningSquares: PropTypes.array,
+  squares: PropTypes.array,
+};
