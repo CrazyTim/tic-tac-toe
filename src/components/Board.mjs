@@ -18,7 +18,7 @@ export default class Board extends React.Component {
         key={i}
         className={className}
         onClick={this.props.onClick.bind(this, i)}
-        disabled={this.props.winningSquares.length > 0 || this.props.squares[i]}
+        disabled={this.props.winningSquares.length > 0 || this.props.squares[i] !== null}
         value={this.props.squares[i]}>
       </Button>
     );
