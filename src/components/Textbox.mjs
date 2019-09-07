@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import {isNumber} from './../utils/utils.mjs'
@@ -9,7 +9,7 @@ export default class Textbox extends React.Component {
   
   render() {
 
-    const className = classNames('textbox', this.props.className);
+    const className = ClassNames('textbox', this.props.className);
 
     let errMsg;
     if (this.props.validate) {

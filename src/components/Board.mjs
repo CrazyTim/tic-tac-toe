@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import Button from './Button.mjs';
@@ -9,7 +9,7 @@ export default class Board extends React.Component {
 
   createSquare(i) {
 
-    const className = classNames('square', {
+    const className = ClassNames('square', {
       'winner': this.props.winningSquares.includes(i),
     });
 

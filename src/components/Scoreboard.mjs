@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import './Scoreboard.css';
@@ -8,11 +8,11 @@ export default class Scoreboard extends React.Component {
 
   render() {
     
-    const classNameX = classNames('player', {
+    const classNameX = ClassNames('player', {
       'winner': this.props.score.X > this.props.score.O,
     });
 
-    const classNameY = classNames('player', {
+    const classNameY = ClassNames('player', {
       'winner': this.props.score.X < this.props.score.O,
     });
 
