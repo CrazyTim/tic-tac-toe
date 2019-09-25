@@ -3,9 +3,11 @@
   <br>
 </div>
 
-# Having fun with the [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+# Tic Tac Toe
 
-View the [live version here](https://crazytim.github.io/react-tutorial).
+Learning React by doing the [Tutorial](https://reactjs.org/tutorial/tutorial.html).
+
+View the [live build](https://crazytim.github.io/react-tutorial).
 
 ## Getting Started
 
