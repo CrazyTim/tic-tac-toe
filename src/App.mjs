@@ -223,17 +223,17 @@ export default class App extends React.Component {
           <div className='status'>{status}</div>
 
           <Button
-            className='btn-undo'
-            onClick={this.undo.bind(this, 1)}
-            hidden={this.state.currentTurn === 0}
-            value='Undo'
-          />
-
-          <Button
             className='btn-play-again'
             onClick={this.resetBoard.bind(this)}
             hidden={!(this.state.winner || this.state.draw)}
             value='Play Again'
+          />
+
+          <Button
+            className='btn-undo'
+            onClick={this.undo.bind(this, 1)}
+            hidden={this.state.currentTurn === 0}
+            value='Undo'
           />
 
           <div className='settings-panel'>
@@ -279,7 +279,6 @@ export default class App extends React.Component {
           </div>
 
           <Button
-            className='btn-play-again'
             onClick={() => {
               //console.log(this.state.winningSquares);
               console.log(this.state.settings);
