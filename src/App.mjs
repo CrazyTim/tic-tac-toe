@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {clone, isNumber} from './../utils/utils.mjs'
-import checkWin from './check-win.mjs'
-import Board from './../components/Board.mjs';
-import Button from './../components/Button.mjs';
-import Scoreboard from './../components/Scoreboard.mjs';
-import InputStepper from './../components/InputStepper.mjs';
+import {clone, isNumber} from './utils/utils.mjs'
+import checkWin from './utils/check-win.mjs'
+import Board from './components/Board.mjs';
+import Button from './components/Button.mjs';
+import Scoreboard from './components/Scoreboard.mjs';
+import InputStepper from './components/InputStepper.mjs';
 import './App.css';
 
 export default class App extends React.Component {
@@ -21,7 +21,7 @@ export default class App extends React.Component {
         numCellsInALineToWin: 3,
       },
       score: {
-        X: 0, 
+        X: 0,
         O: 0,
       }
     };
@@ -45,8 +45,8 @@ export default class App extends React.Component {
       draw: false,
     };
 
-    this.state = {...defaultState, 
-                  ...defaultInputState, 
+    this.state = {...defaultState,
+                  ...defaultInputState,
                   ...defaultGameState,
                   defaultGameState};
 
@@ -65,7 +65,7 @@ export default class App extends React.Component {
     }];
 
     this.setState(
-      {settings, defaultGameState}, 
+      {settings, defaultGameState},
       ()=> {
         this.resetBoard();
       }
@@ -99,14 +99,14 @@ export default class App extends React.Component {
   }
 
   disable_btnSaveSettings() {
-   
+
     const s = this.state
 
     // detect if state will change
     const changed = (s.inputs.txtNumRows !== s.settings.numRows ||
                      s.inputs.txtNumCols !== s.settings.numCols ||
                      s.inputs.txtNumCells !== s.settings.numCellsInALineToWin);
-     
+
      // validate inputs
     const valid = true;
 
@@ -160,7 +160,7 @@ export default class App extends React.Component {
     for (let i=0; i<(squares.length-1); i++) {
 
       winningSquares = checkWin(squares, this.state.settings.numRows, this.state.settings.numCols, i, this.state.settings.numCellsInALineToWin);
-      
+
       if (winningSquares.length === this.state.settings.numCellsInALineToWin) {
         winner = squares[i];
         score[winner] +=1;
@@ -212,7 +212,7 @@ export default class App extends React.Component {
             score={this.state.score}
           />
 
-          <Board 
+          <Board
             onClick={this.handleClick_btnSquare.bind(this)}
             squares={this.state.history[this.state.currentTurn].squares}
             winningSquares={this.state.winningSquares}
@@ -222,14 +222,14 @@ export default class App extends React.Component {
 
           <div className='status'>{status}</div>
 
-          <Button 
+          <Button
             className='btn-undo'
             onClick={this.undo.bind(this, 1)}
             hidden={this.state.currentTurn === 0}
-            value='Undo' 
+            value='Undo'
           />
 
-          <Button 
+          <Button
             className='btn-play-again'
             onClick={this.resetBoard.bind(this)}
             hidden={!(this.state.winner || this.state.draw)}
@@ -269,7 +269,7 @@ export default class App extends React.Component {
               />
             </div>
 
-            <Button 
+            <Button
               className='btn-save-settings'
               onClick={this.handleClick_btnSaveSettings.bind(this)}
               disabled={this.disable_btnSaveSettings()}
@@ -288,13 +288,13 @@ export default class App extends React.Component {
               console.log(this.state.inputs);
             }}
             hidden
-            value='log' 
+            value='log'
           />
 
-        </div> 
+        </div>
       </div>
     );
-    
+
   }
 
 }
