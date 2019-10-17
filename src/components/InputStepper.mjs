@@ -4,42 +4,38 @@ import PropTypes from 'prop-types';
 
 import './InputStepper.css';
 
-export default class InputStepper extends React.Component {
-  
-  render() {
+const InputStepper = (props) => {
 
-    const btnMinusDisabled = this.props.value <= this.props.minValue;
-    const btnPlusDisabled = this.props.value >= this.props.maxValue;
-    
-    const className = ClassNames('input-stepper', this.props.className);
+  const btnMinusDisabled = props.value <= props.minValue;
+  const btnPlusDisabled = props.value >= props.maxValue;
 
-    const classNamePlus = ClassNames('btn plus', {
-      'disabled': btnPlusDisabled,
-    });
+  const className = ClassNames('input-stepper', props.className);
 
-    const classNameMinus = ClassNames('btn minus', {
-      'disabled': btnMinusDisabled,
-    });
+  const classNamePlus = ClassNames('btn plus', {
+    'disabled': btnPlusDisabled,
+  });
 
-    return (
-      <div className={className}>
-        <button 
-          className={classNameMinus}
-          onClick={!btnMinusDisabled ? this.props.onClick.bind(this, -1) : undefined}
-        >-</button>
-        <label>{this.props.value}</label>
-        <button
-          className={classNamePlus}
-          onClick={!btnPlusDisabled ? this.props.onClick.bind(this, 1) : undefined}
-        >+</button>
-      </div>
-    );
+  const classNameMinus = ClassNames('btn minus', {
+    'disabled': btnMinusDisabled,
+  });
 
-  }
+  return (
+    <div className={className}>
+      <button
+        className={classNameMinus}
+        onClick={!btnMinusDisabled ? props.onClick.bind(this, -1) : undefined}
+      >-</button>
+      <label>{props.value}</label>
+      <button
+        className={classNamePlus}
+        onClick={!btnPlusDisabled ? props.onClick.bind(this, 1) : undefined}
+      >+</button>
+    </div>
+  );
 
 }
 
-// apply typechecking for dev mode
+// apply typechecking (dev mode only)
 InputStepper.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
@@ -47,3 +43,5 @@ InputStepper.propTypes = {
   minValue: PropTypes.number,
   maxValue: PropTypes.number,
 };
+
+export default InputStepper;

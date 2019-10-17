@@ -5,49 +5,45 @@ import PropTypes from 'prop-types';
 import Button from './Button.mjs';
 import './Board.css';
 
-export default class Board extends React.Component {
+const Board = (props) => {
 
-  createSquare(i) {
+  const createSquare = (i) => {
 
     const className = ClassNames('square', {
-      'winner': this.props.winningSquares.includes(i),
+      'winner': props.winningSquares.includes(i),
     });
 
     return (
-      <Button 
+      <Button
         key={i}
         className={className}
-        onClick={this.props.onClick.bind(this, i)}
-        disabled={this.props.winningSquares.length > 0 || this.props.squares[i] !== null}
-        value={this.props.squares[i]}>
+        onClick={props.onClick.bind(this, i)}
+        disabled={props.winningSquares.length > 0 || props.squares[i] !== null}
+        value={props.squares[i]}>
       </Button>
     );
-    
+
   }
 
-  render() {
+  const rows = [];
 
-    const rows = [];
-
-    // draw dynamic number of rows and columns
-    for (let i=0; i<this.props.numRows; i++) {
-      const row = [];
-      const startIndex = (i * this.props.numCols);
-      for (let j=0; j<this.props.numCols; j++) {
-        row.push(this.createSquare(startIndex+j));
-      }
-      rows.push(<div key={i} className='board-row'>{row}</div>)
+  // draw dynamic number of rows and columns
+  for (let i=0; i<props.numRows; i++) {
+    const row = [];
+    const startIndex = (i * props.numCols);
+    for (let j=0; j<props.numCols; j++) {
+      row.push(createSquare(startIndex+j));
     }
-
-    return (
-      <div className='board'><div>{rows}</div></div>
-    );
-
+    rows.push(<div key={i} className='board-row'>{row}</div>)
   }
+
+  return (
+    <div className='board'><div>{rows}</div></div>
+  );
 
 }
 
-// apply typechecking for dev mode
+// apply typechecking (dev mode only)
 Board.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
@@ -56,3 +52,5 @@ Board.propTypes = {
   winningSquares: PropTypes.array,
   squares: PropTypes.array,
 };
+
+export default Board;

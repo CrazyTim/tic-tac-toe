@@ -4,28 +4,24 @@ import PropTypes from 'prop-types';
 
 import './Button.css';
 
-export default class Button extends React.Component {
+const Button = (props) => {
 
-  render() {
+  const className = ClassNames('btn', props.className, {
+    'hidden': props.hidden,
+    'disabled': props.disabled,
+  });
 
-    const className = ClassNames('btn', this.props.className, {
-      'hidden': this.props.hidden,
-      'disabled': this.props.disabled,
-    });
+  return (
+    <button
+      className={className}
+      onClick={(!props.disabled) ? props.onClick : undefined}>
+      {props.value}
+    </button>
+  );
 
-    return (
-      <button 
-        className={className}
-        onClick={(!this.props.disabled) ? this.props.onClick : undefined}>
-        {this.props.value}
-      </button>
-    );
-
-  }
-  
 }
 
-// apply typechecking for dev mode
+// apply typechecking (dev mode only)
 Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
@@ -33,3 +29,5 @@ Button.propTypes = {
   hidden: PropTypes.bool,
   disabled: PropTypes.bool,
 };
+
+export default Button;
