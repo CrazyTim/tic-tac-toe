@@ -1,4 +1,5 @@
 import React from 'react';
+import ClassNames from 'classnames';
 
 import {clone, isNumber} from './utils/utils.mjs'
 import checkWin from './utils/check-win.mjs'
@@ -23,7 +24,8 @@ export default class App extends React.Component {
       score: {
         X: 0,
         O: 0,
-      }
+      },
+      loaded: false,
     };
 
     const defaultInputState = {
@@ -31,7 +33,7 @@ export default class App extends React.Component {
         txtNumRows: defaultState.settings.numRows,
         txtNumCols: defaultState.settings.numCols,
         txtNumCells: defaultState.settings.numCellsInALineToWin,
-      }
+      },
     }
 
     const defaultGameState = {
@@ -48,7 +50,12 @@ export default class App extends React.Component {
     this.state = {...defaultState,
                   ...defaultInputState,
                   ...defaultGameState,
-                  defaultGameState};
+                  defaultGameState,
+                };
+
+    window.onload = () => {
+      this.setState({loaded: true});
+    };
 
   }
 
@@ -204,8 +211,12 @@ export default class App extends React.Component {
       status = 'Player ' + (this.state.xIsNext ? 'X' : 'O') + '\'s turn';
     }
 
+    const className = ClassNames('game-wrapper', {
+      'loaded': this.state.loaded,
+    });
+
     return (
-      <div className='game-wrapper'>
+      <div className={className}>
         <div className='game'>
 
           <Scoreboard
