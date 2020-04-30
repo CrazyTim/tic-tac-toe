@@ -1,14 +1,17 @@
 .input-stepper {
-  align-self: start;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto;
   align-items: center;
   flex-direction: row;
+  align-items: stretch;
 }
 
 .input-stepper label {
-  padding: 4px 5px 0 5px;
-  text-align: center;
-  height: 28px;
+  display: flex;
+  width: 30px;
+  padding-bottom: 1px;
+  justify-content: center;
+  align-items: center;
   margin: 0 0;
   border: 1px solid #999;
   border-right: 0;
@@ -16,12 +19,11 @@
   box-sizing: border-box;
   z-index: 0;
   outline: none;
+  padding: 5px 15px;
 }
 
 .input-stepper button {
-  height: 28px;
-  width: 28px;
-  padding: 0;
+  padding: 0 10px 2px 10px;
   border: 1px solid #999;
   box-sizing: border-box;
   background-color: white;
@@ -30,8 +32,7 @@
   line-height: 0;
   overflow: hidden;
   z-index: 1;
-  padding-bottom: 2px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .input-stepper button:first-of-type {
@@ -48,4 +49,12 @@
 
 .input-stepper button:not(.disabled):hover {
   background-color: white;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .input-stepper label  {
+    padding: 10px 15px;
+  }
+
 }
