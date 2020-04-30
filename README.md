@@ -1,5 +1,5 @@
 <div>
-  <img alt="Countdown" src="https://crazytim.github.io/react-tutorial/img/app.jpg" width=350px />
+  <img alt="Countdown" src="https://crazytim.github.io/react-tutorial/img/repo-thumbnail.jpg" width=350px />
   <br>
 </div>
 
