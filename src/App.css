@@ -15,10 +15,8 @@ body {
 
 .game-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* padding: 20px 20px; */
   flex-direction: column;
+  justify-content: center;
   opacity: 0;
   transition: opacity 1s;
 }
@@ -32,16 +30,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
-  padding: 20px; /* gap between each item */
+  padding-bottom: 30px;
 }
 
 .game > * {
   margin: 8px;  /* gap between each item */
 }
 
+.game .header {
+  align-self: stretch;
+  align-content: center;
+  background-color: #ffee99;
+  padding-bottom: 44px;
+  margin: 0;
+  margin-bottom: -38px;
+  box-shadow: 2px 3px 7px -5px #0000005c;
+}
+
 .settings-panel {
-  width: 100%;
   border: 1px solid #999;
   padding: 20px;
   box-sizing: border-box;
@@ -111,6 +117,7 @@ button {
 h1 {
   font-size: 50px;
   font-family: 'Shadows Into Light', cursive;
-  margin-top: 20px !important;
-  margin-bottom: -8px !important;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
 }

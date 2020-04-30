@@ -220,11 +220,15 @@ export default class App extends React.Component {
       <div className={className}>
         <div className='game'>
 
-          <h1>Tic Tac Toe</h1>
+          <div className='header'>
 
-          <Scoreboard
-            score={this.state.score}
-          />
+            <h1>Tic Tac Toe</h1>
+
+            <Scoreboard
+              score={this.state.score}
+            />
+
+          </div>
 
           <Board
             onClick={this.handleClick_btnSquare.bind(this)}

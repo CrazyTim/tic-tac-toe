@@ -5,6 +5,7 @@
   margin-top: 20px !important;
   margin-bottom: 20px !important;
   border: solid 2px #7d7d7d;
+  box-shadow: 2px 3px 7px -5px #0000005c;
 }
 
 .board .board-row:first-of-type .square {
@@ -57,11 +58,11 @@
   }
 
   .square.winner:hover {
-    background-color: lightgreen;
+    background-color: #bbffbb;
   }
 
 }
 
 .square.winner {
-  background-color: lightgreen;
+  background-color: #bbffbb;
 }
