@@ -66,6 +66,7 @@ export default class App extends React.Component {
     settings.numCols = parseInt(this.state.inputs.txtNumCols);
     settings.numCellsInALineToWin = parseInt(this.state.inputs.txtNumCells);
 
+    // initalise new default game state
     const defaultGameState = clone(this.state.defaultGameState);
     defaultGameState.history = [{
         squares: Array(settings.numRows * settings.numCols).fill(null),
@@ -73,7 +74,7 @@ export default class App extends React.Component {
 
     this.setState(
       {settings, defaultGameState},
-      ()=> {
+      () => {
         this.resetBoard();
       }
     );
@@ -218,6 +219,8 @@ export default class App extends React.Component {
     return (
       <div className={className}>
         <div className='game'>
+
+          <h1>Tic Tac Toe</h1>
 
           <Scoreboard
             score={this.state.score}
