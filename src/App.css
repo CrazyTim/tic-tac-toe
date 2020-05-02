@@ -120,3 +120,20 @@ h1 {
   margin-bottom: 0px;
   text-align: center;
 }
+
+/* themes */
+
+.theme-default {
+  --button-color-disabled: #bdbdbd;
+  --button-background-color: transparent;
+  --button-background-color-hover: #f3f3f3;
+  --button-background-color-disabled: transparent;
+  --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
+  --square-background-image-url-value-o: url("./img/theme-default/glyph-o.svg");
+}
+
+.theme-dark {
+}
+
+.theme-retro {
+}

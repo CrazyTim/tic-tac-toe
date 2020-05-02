@@ -6,6 +6,7 @@
   margin-bottom: 20px !important;
   border: solid 2px #7d7d7d;
   box-shadow: 2px 3px 7px -5px #0000005c;
+  background-color: white;
 }
 
 .board .board-row:first-of-type .square {
@@ -71,9 +72,9 @@
 }
 
 .square.value-x {
-  background-image: url("../img/theme-default/glyph-x.svg");
+  background-image: var(--square-background-image-url-value-x);
 }
 
 .square.value-o {
-  background-image: url("../img/theme-default/glyph-o.svg");
+  background-image: var(--square-background-image-url-value-o);
 }

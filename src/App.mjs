@@ -212,7 +212,7 @@ export default class App extends React.Component {
       status = 'Player ' + (this.state.xIsNext ? 'X' : 'O') + '\'s turn';
     }
 
-    const className = ClassNames('game-wrapper', {
+    const className = ClassNames('game-wrapper', 'theme-default', {
       'loaded': this.state.loaded,
     });
 
