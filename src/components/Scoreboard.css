@@ -29,13 +29,22 @@
   font-size: 20px;
 }
 
-.score-board .player div:nth-child(1) {
-  font-weight: bold;
-  font-size: 20px;
-  font-family: Mali;
+.score-board .player .title {
+  height: 20px;
   background-color: #ffe979;
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.score-board .player div:nth-child(2) {
+.score-board .player .score {
   background-color: #fff;
+}
+
+.score-board .player-x .title {
+  background-image: url("../img/theme-default/glyph-x.svg");
+}
+
+.score-board .player-o .title {
+  background-image: url("../img/theme-default/glyph-o.svg");
 }

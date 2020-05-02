@@ -7,9 +7,16 @@ import './Board.css';
 
 const Board = (props) => {
 
-  const createSquare = (i) => {
+  const createSquare = function(i) {
 
-    const className = ClassNames('square', {
+    let val = '';
+    if (props.squares[i] === 'X') {
+      val = 'value-x';
+    } else if (props.squares[i] === 'O') {
+      val = 'value-o';
+    }
+
+    const className = ClassNames('square', val, {
       'winner': props.winningSquares.includes(i),
     });
 
@@ -19,7 +26,7 @@ const Board = (props) => {
         className={className}
         onClick={props.onClickSquare.bind(this, i)}
         disabled={props.winningSquares.length > 0 || props.squares[i] !== null}
-        value={props.squares[i]}>
+        value=''>
       </Button>
     );
 

@@ -35,6 +35,9 @@
   transition: all 0.2s ease-out;
   border-radius: 0;
   overflow: hidden;
+  background-size: 45px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .square:focus {
@@ -65,4 +68,12 @@
 
 .square.winner {
   background-color: #bbffbb;
+}
+
+.square.value-x {
+  background-image: url("../img/theme-default/glyph-x.svg");
+}
+
+.square.value-o {
+  background-image: url("../img/theme-default/glyph-o.svg");
 }
