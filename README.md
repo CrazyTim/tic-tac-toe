@@ -18,15 +18,23 @@ npm install
 npm start
 ```
 
-## Features Added After Completing The Tutorial
+## Deploy to GitHub Pages
 
-- Make it look fancier with fonts and stuff.
-- Add a button to reset the board and play again.
-- Write a new win algorithm that allows for any number of rows/columns, and any number of symbols that you need to get in a line to win (changing it will break the game, but its fun to see it work!)
-- Provide inputs so user can change the number of row/columns, etc.
-- Show each player's running score.
-- Highlight the winning squares green.
-- Display a message when the game is a draw.
-- Show a single undo button, instead of one for each turn.
-- Separate components and styles into their own files.
-- Remove the square component (unnecessary, replace with a button).
+```
+npm run deploy
+```
+
+For information about deploying a Create React App to GitHub Pages [refer here](https://create-react-app.dev/docs/deployment/#github-pages).
+
+## Features
+
+- Fancy styles.
+- A button to reset the board and play again.
+- A new win algorithm that allows for a dynamic number of rows, columns, and the number of symbols that you need to get in a line to win. Note that changing this actually breaks the game, but its fun to see it work!
+- User can change some of the settings, including the number of rows and columns.
+- Each player's score is shown above the board.
+- The winning squares are highlighted green when the game is over.
+- A message is shown telling the user when the game is tied.
+- The multiple undo buttons for each turn have been replaced with a single undo button.
+- Components and styles have been separated into their own files.
+- The `Square` component was removed (unnecessary, replaced with a styled `Button`).
