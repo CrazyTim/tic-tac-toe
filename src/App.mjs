@@ -149,7 +149,7 @@ export default class App extends React.Component {
 
   }
 
-  handleClick_btnSquare(i) {
+  handleClick_Square(i) {
     // get history from the beginning until currentTurn
     const currentHistory = this.state.history.slice(0, this.state.currentTurn + 1);
     const squares = clone(currentHistory[this.state.currentTurn].squares);
@@ -231,7 +231,7 @@ export default class App extends React.Component {
           </div>
 
           <Board
-            onClick={this.handleClick_btnSquare.bind(this)}
+            onClickSquare={this.handleClick_Square.bind(this)}
             squares={this.state.history[this.state.currentTurn].squares}
             winningSquares={this.state.winningSquares}
             numRows={this.state.settings.numRows}
