@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: row;
   align-items: stretch;
+  background-color: white;
 }
 
 .input-stepper label {

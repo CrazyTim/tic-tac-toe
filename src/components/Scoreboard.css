@@ -32,7 +32,7 @@
 
 .score-board .player .title {
   height: 20px;
-  background-color: #ffe979;
+  /* background-color: #ffe979; */
   background-size: 18px;
   background-position: center;
   background-repeat: no-repeat;
