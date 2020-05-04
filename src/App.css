@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mali:wght@300;400&display=swap');
 
 * {
   box-sizing: content-box;
@@ -120,4 +119,21 @@ h1 {
   margin-top: 20px;
   margin-bottom: 0px;
   text-align: center;
+}
+
+/* themes */
+
+.theme-default {
+  --button-color-disabled: #bdbdbd;
+  --button-background-color: transparent;
+  --button-background-color-hover: #f3f3f3;
+  --button-background-color-disabled: transparent;
+  --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
+  --square-background-image-url-value-o: url("./img/theme-default/glyph-o.svg");
+}
+
+.theme-dark {
+}
+
+.theme-retro {
 }

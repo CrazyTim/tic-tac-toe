@@ -101,11 +101,6 @@ export default class App extends React.Component {
     this.setState({inputs});
   }
 
-  validateNumber(value) {
-    if (!isNumber(value) || value < 3 || value > 10) return 'must be a number between 3 and 10'
-    return null;
-  }
-
   disable_btnSaveSettings() {
 
     const s = this.state
@@ -149,7 +144,7 @@ export default class App extends React.Component {
 
   }
 
-  handleClick_btnSquare(i) {
+  handleClick_Square(i) {
     // get history from the beginning until currentTurn
     const currentHistory = this.state.history.slice(0, this.state.currentTurn + 1);
     const squares = clone(currentHistory[this.state.currentTurn].squares);
@@ -212,7 +207,7 @@ export default class App extends React.Component {
       status = 'Player ' + (this.state.xIsNext ? 'X' : 'O') + '\'s turn';
     }
 
-    const className = ClassNames('game-wrapper', {
+    const className = ClassNames('game-wrapper', 'theme-default', {
       'loaded': this.state.loaded,
     });
 
@@ -231,7 +226,7 @@ export default class App extends React.Component {
           </div>
 
           <Board
-            onClick={this.handleClick_btnSquare.bind(this)}
+            onClickSquare={this.handleClick_Square.bind(this)}
             squares={this.state.history[this.state.currentTurn].squares}
             winningSquares={this.state.winningSquares}
             numRows={this.state.settings.numRows}
@@ -263,7 +258,7 @@ export default class App extends React.Component {
               <InputStepper
                 className='txt-num-rows'
                 onClick={this.handleClick_txtNumRows.bind(this)}
-                maxValue={10}
+                maxValue={5}
                 minValue={3}
                 value={this.state.inputs.txtNumRows}
               />
@@ -272,7 +267,7 @@ export default class App extends React.Component {
               <InputStepper
                 className='txt-num-cols'
                 onClick={this.handleClick_txtNumCols.bind(this)}
-                maxValue={10}
+                maxValue={5} // any more than 5 and the layout will break on small screens
                 minValue={3}
                 value={this.state.inputs.txtNumCols}
               />

@@ -7,9 +7,16 @@ import './Board.css';
 
 const Board = (props) => {
 
-  const createSquare = (i) => {
+  const createSquare = function(i) {
 
-    const className = ClassNames('square', {
+    let val = '';
+    if (props.squares[i] === 'X') {
+      val = 'value-x';
+    } else if (props.squares[i] === 'O') {
+      val = 'value-o';
+    }
+
+    const className = ClassNames('square', val, {
       'winner': props.winningSquares.includes(i),
     });
 
@@ -17,9 +24,9 @@ const Board = (props) => {
       <Button
         key={i}
         className={className}
-        onClick={props.onClick.bind(this, i)}
+        onClick={props.onClickSquare.bind(this, i)}
         disabled={props.winningSquares.length > 0 || props.squares[i] !== null}
-        value={props.squares[i]}>
+        value=''>
       </Button>
     );
 
@@ -29,12 +36,18 @@ const Board = (props) => {
 
   // draw dynamic number of rows and columns
   for (let i=0; i<props.numRows; i++) {
+
     const row = [];
-    const startIndex = (i * props.numCols);
+    const columnMultiplier = (i * props.numCols);
+
     for (let j=0; j<props.numCols; j++) {
-      row.push(createSquare(startIndex+j));
+      row.push(createSquare(columnMultiplier + j));
     }
-    rows.push(<div key={i} className='board-row'>{row}</div>)
+
+    rows.push(
+      <div key={i} className='board-row'>{row}</div>
+    );
+
   }
 
   return (

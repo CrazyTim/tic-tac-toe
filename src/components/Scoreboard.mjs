@@ -6,11 +6,11 @@ import './Scoreboard.css';
 
 const Scoreboard = (props) => {
 
-  const classNameX = ClassNames('player', {
+  const classNameX = ClassNames('player', 'player-x', {
     'winner': props.score.X > props.score.O,
   });
 
-  const classNameY = ClassNames('player', {
+  const classNameY = ClassNames('player', 'player-o', {
     'winner': props.score.X < props.score.O,
   });
 
@@ -20,12 +20,12 @@ const Scoreboard = (props) => {
   return (
     <div className='score-board'>
       <div className={classNameX}>
-        <div>X</div>
-        <div>{scoreX}</div>
+        <div className='title'></div>
+        <div className='score'>{scoreX}</div>
       </div>
       <div className={classNameY}>
-        <div>O</div>
-        <div>{scoreO}</div>
+        <div className='title'></div>
+        <div className='score'>{scoreO}</div>
       </div>
     </div>
   );
