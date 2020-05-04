@@ -101,11 +101,6 @@ export default class App extends React.Component {
     this.setState({inputs});
   }
 
-  validateNumber(value) {
-    if (!isNumber(value) || value < 3 || value > 10) return 'must be a number between 3 and 10'
-    return null;
-  }
-
   disable_btnSaveSettings() {
 
     const s = this.state
@@ -263,7 +258,7 @@ export default class App extends React.Component {
               <InputStepper
                 className='txt-num-rows'
                 onClick={this.handleClick_txtNumRows.bind(this)}
-                maxValue={10}
+                maxValue={5}
                 minValue={3}
                 value={this.state.inputs.txtNumRows}
               />
@@ -272,7 +267,7 @@ export default class App extends React.Component {
               <InputStepper
                 className='txt-num-cols'
                 onClick={this.handleClick_txtNumCols.bind(this)}
-                maxValue={10}
+                maxValue={5} // any more than 5 and the layout will break on small screens
                 minValue={3}
                 value={this.state.inputs.txtNumCols}
               />
