@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import {clone, isNumber} from './utils/utils.mjs'
+import {clone} from './utils/utils.mjs'
 import checkWin from './utils/check-win.mjs'
 import Board from './components/Board.mjs';
 import Button from './components/Button.mjs';
