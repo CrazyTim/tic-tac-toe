@@ -36,7 +36,7 @@ body {
   margin: 8px;  /* gap between each item */
 }
 
-.game .header {
+.header {
   align-self: stretch;
   align-content: center;
   background-color: #ffee99;
@@ -44,42 +44,69 @@ body {
   margin: 0;
   margin-bottom: -38px;
   box-shadow: 2px 3px 7px -5px #0000005c;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
+
+  .header > .wrapper {
+    display: grid;
+    grid-template-columns: minmax(60px, 150px) max-content minmax(60px, 150px);
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header .btn-show-settings {
+    justify-self: left;
+    align-self: end;
+    background-image: var(--settings-button-background-image-url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffe979;
+    background-size: 26px;
+  }
 
 .settings-panel {
-  border: 1px solid #999;
-  padding: 20px;
-  box-sizing: border-box;
-  margin-bottom: 0;
-  margin-top: 20px;
-  background-color: white;
-}
-
-.settings-panel > label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.settings-panel > .btn {
-  margin-top: 10px;
-}
-
-.settings-panel .wrapper {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: auto auto;
+  margin: 0 !important;
+  height:0px;
+  transition: height 0.5s;
+  overflow: hidden;
+  align-self: stretch;
 }
 
-.settings-panel .wrapper > label {
-  align-self: center;
-  justify-self: start;
-}
+  .settings-panel .inner-wrapper {
+    padding: 30px 0 10px;
+    justify-self: center;
+  }
 
-.settings-panel .wrapper > *:not(label) {
-  align-self: center;
-  justify-self: end;
-}
+  .settings-panel .inner-wrapper > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .settings-panel .inner-wrapper > .btn {
+    margin-top: 10px;
+    background-color: #ffe979;
+  }
+
+  .settings-panel .wrapper {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto auto;
+  }
+
+  .settings-panel .wrapper > label {
+    align-self: center;
+    justify-self: start;
+  }
+
+  .settings-panel .wrapper > *:not(label) {
+    align-self: center;
+    justify-self: end;
+  }
 
 .textbox {
   align-self: start;
@@ -116,20 +143,21 @@ button {
 h1 {
   font-size: 50px;
   font-family: 'Shadows Into Light', cursive;
-  margin-top: 20px;
-  margin-bottom: 0px;
-  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 /* themes */
 
 .theme-default {
-  --button-color-disabled: #bdbdbd;
+  --button-color-disabled: #00000052;
   --button-background-color: transparent;
   --button-background-color-hover: #f3f3f3;
   --button-background-color-disabled: transparent;
+  --button-border-color: #0000004a;
   --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
   --square-background-image-url-value-o: url("./img/theme-default/glyph-o.svg");
+  --settings-button-background-image-url: url("./img/theme-default/settings.svg");
 }
 
 .theme-dark {

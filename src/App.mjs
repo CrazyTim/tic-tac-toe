@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import {clone} from './utils/utils.mjs'
+import {clone, ZERO_WIDTH_SPACE} from './utils/utils.mjs'
 import checkWin from './utils/check-win.mjs'
 import Board from './components/Board.mjs';
 import Button from './components/Button.mjs';
@@ -15,6 +15,12 @@ export default class App extends React.Component {
 
     super(props);
 
+    // get ref so we can lookup the scrollHeight to animate it
+    this.settingsPanel = null;
+    this.setSettingsPanel = element => {
+      this.settingsPanel = element;
+    };
+
     const defaultState = {
       settings: {
         numRows: 3,
@@ -26,6 +32,10 @@ export default class App extends React.Component {
         O: 0,
       },
       loaded: false,
+      gui: {
+        settingsPanelHeight: 0,
+      },
+      isSettingsPanelVisible: false,
     };
 
     const defaultInputState = {
@@ -72,8 +82,12 @@ export default class App extends React.Component {
         squares: Array(settings.numRows * settings.numCols).fill(null),
     }];
 
+    // hide settings panel
+    const gui = clone(this.state.gui);
+    gui.settingsPanelHeight = 0;
+
     this.setState(
-      {settings, defaultGameState},
+      {settings, defaultGameState, gui},
       () => {
         this.resetBoard();
       }
@@ -99,6 +113,21 @@ export default class App extends React.Component {
     const inputs = clone(this.state.inputs);
     inputs.txtNumCells += increment;
     this.setState({inputs});
+  }
+
+  handleClick_btnSettings() {
+    if (this.settingsPanel === null) return;
+
+    const gui = clone(this.state.gui);
+
+    // toggle show panel
+    if (gui.settingsPanelHeight === 0) {
+      gui.settingsPanelHeight = this.settingsPanel.scrollHeight;
+    } else {
+      gui.settingsPanelHeight = 0;
+    }
+
+    this.setState({gui});
   }
 
   disable_btnSaveSettings() {
@@ -207,21 +236,80 @@ export default class App extends React.Component {
       status = 'Player ' + (this.state.xIsNext ? 'X' : 'O') + '\'s turn';
     }
 
-    const className = ClassNames('game-wrapper', 'theme-default', {
+    const gameWrapperClassName = ClassNames('game-wrapper', 'theme-default', {
       'loaded': this.state.loaded,
+      'shown': this.state.isSettingsPanelVisible,
     });
 
+    const settingsPanelStyle = {
+      height: this.state.gui.settingsPanelHeight,
+    };
+
     return (
-      <div className={className}>
+      <div className={gameWrapperClassName}>
         <div className='game'>
 
           <div className='header'>
 
             <h1>Tic Tac Toe</h1>
 
-            <Scoreboard
-              score={this.state.score}
-            />
+            <div className='wrapper'>
+              <div></div>
+              <Scoreboard
+                score={this.state.score}
+              />
+
+              <Button
+                className='btn-show-settings'
+                onClick={this.handleClick_btnSettings.bind(this)}
+                //hidden={!(this.state.winner || this.state.draw)}
+                value={ZERO_WIDTH_SPACE}
+              />
+
+            </div>
+
+            <div className='settings-panel' style={settingsPanelStyle} ref={this.setSettingsPanel}>
+              <div className='inner-wrapper'>
+                <label>Settings:</label>
+
+                <div className='wrapper'>
+
+                  <label>Rows:</label>
+                  <InputStepper
+                    className='txt-num-rows'
+                    onClick={this.handleClick_txtNumRows.bind(this)}
+                    maxValue={5}
+                    minValue={3}
+                    value={this.state.inputs.txtNumRows}
+                  />
+
+                  <label>Columns:</label>
+                  <InputStepper
+                    className='txt-num-cols'
+                    onClick={this.handleClick_txtNumCols.bind(this)}
+                    maxValue={5} // any more than 5 and the layout will break on small screens
+                    minValue={3}
+                    value={this.state.inputs.txtNumCols}
+                  />
+
+                  <label>Cells in a line to win:</label>
+                  <InputStepper
+                    className='txt-num-cells'
+                    onClick={this.handleClick_txtNumCells.bind(this)}
+                    maxValue={Math.max(this.state.inputs.txtNumRows, this.state.inputs.txtNumCols)}
+                    minValue={3}
+                    value={this.state.inputs.txtNumCells}
+                  />
+                </div>
+
+                <Button
+                  className='btn-save-settings'
+                  onClick={this.handleClick_btnSaveSettings.bind(this)}
+                  disabled={this.disable_btnSaveSettings()}
+                  value='Save'
+                />
+              </div>
+            </div>
 
           </div>
 
@@ -247,60 +335,6 @@ export default class App extends React.Component {
             onClick={this.undo.bind(this, 1)}
             hidden={this.state.currentTurn === 0}
             value='Undo'
-          />
-
-          <div className='settings-panel'>
-
-            <label>Settings:</label>
-
-            <div className='wrapper'>
-              <label>Rows:</label>
-              <InputStepper
-                className='txt-num-rows'
-                onClick={this.handleClick_txtNumRows.bind(this)}
-                maxValue={5}
-                minValue={3}
-                value={this.state.inputs.txtNumRows}
-              />
-
-              <label>Columns:</label>
-              <InputStepper
-                className='txt-num-cols'
-                onClick={this.handleClick_txtNumCols.bind(this)}
-                maxValue={5} // any more than 5 and the layout will break on small screens
-                minValue={3}
-                value={this.state.inputs.txtNumCols}
-              />
-
-              <label>Cells in a line to win:</label>
-              <InputStepper
-                className='txt-num-cells'
-                onClick={this.handleClick_txtNumCells.bind(this)}
-                maxValue={Math.max(this.state.inputs.txtNumRows, this.state.inputs.txtNumCols)}
-                minValue={3}
-                value={this.state.inputs.txtNumCells}
-              />
-            </div>
-
-            <Button
-              className='btn-save-settings'
-              onClick={this.handleClick_btnSaveSettings.bind(this)}
-              disabled={this.disable_btnSaveSettings()}
-              value='Save'
-            />
-
-          </div>
-
-          <Button
-            onClick={() => {
-              //console.log(this.state.winningSquares);
-              console.log(this.state.settings);
-              //console.log(this.state.history[0]);
-              //console.log(this.defaultState.history[0]);
-              console.log(this.state.inputs);
-            }}
-            hidden
-            value='log'
           />
 
         </div>

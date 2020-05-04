@@ -38,3 +38,6 @@ For information about deploying a Create React App to GitHub Pages [refer here](
 - The multiple undo buttons for each turn have been replaced with a single undo button.
 - Components and styles have been separated into their own files.
 - The `Square` component was removed (unnecessary, replaced with a styled `Button`).
+
+## Acknowledgements
+- Cog icon adapted from [Octicons](https://github.com/primer/octicons), MIT license.
