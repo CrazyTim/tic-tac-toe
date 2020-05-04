@@ -148,6 +148,7 @@ h1 {
   --button-background-color: transparent;
   --button-background-color-hover: #f3f3f3;
   --button-background-color-disabled: transparent;
+  --button-border-color: #0000004a;
   --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
   --square-background-image-url-value-o: url("./img/theme-default/glyph-o.svg");
   --settings-button-background-image-url: url("./img/theme-default/settings.svg");
