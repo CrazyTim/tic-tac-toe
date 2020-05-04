@@ -36,7 +36,7 @@ body {
   margin: 8px;  /* gap between each item */
 }
 
-.game .header {
+.header {
   align-self: stretch;
   align-content: center;
   background-color: #ffee99;
@@ -55,31 +55,31 @@ body {
   background-color: white;
 }
 
-.settings-panel > label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+  .settings-panel > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
 
-.settings-panel > .btn {
-  margin-top: 10px;
-}
+  .settings-panel > .btn {
+    margin-top: 10px;
+  }
 
-.settings-panel .wrapper {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: auto auto;
-}
+  .settings-panel .wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto;
+  }
 
-.settings-panel .wrapper > label {
-  align-self: center;
-  justify-self: start;
-}
+  .settings-panel .wrapper > label {
+    align-self: center;
+    justify-self: start;
+  }
 
-.settings-panel .wrapper > *:not(label) {
-  align-self: center;
-  justify-self: end;
-}
+  .settings-panel .wrapper > *:not(label) {
+    align-self: center;
+    justify-self: end;
+  }
 
 .textbox {
   align-self: start;
