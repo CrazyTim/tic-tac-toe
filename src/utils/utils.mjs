@@ -1,3 +1,5 @@
+export const ZERO_WIDTH_SPACE = '\u200B';
+export const NON_BREAKING_SAPCE = '\u00A0';
 
 export function clone(x) {
   // clone an array or object
@@ -11,7 +13,7 @@ export function clone(x) {
   } else {
     return x;
   }
-  
+
 }
 
 export function isNumber(s) {

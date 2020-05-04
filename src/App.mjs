@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import {clone} from './utils/utils.mjs'
+import {clone, ZERO_WIDTH_SPACE} from './utils/utils.mjs'
 import checkWin from './utils/check-win.mjs'
 import Board from './components/Board.mjs';
 import Button from './components/Button.mjs';
@@ -219,9 +219,20 @@ export default class App extends React.Component {
 
             <h1>Tic Tac Toe</h1>
 
-            <Scoreboard
-              score={this.state.score}
-            />
+            <div className='wrapper'>
+              <div></div>
+              <Scoreboard
+                score={this.state.score}
+              />
+
+              <Button
+                className='btn-show-settings'
+                //onClick={this.resetBoard.bind(this)}
+                //hidden={!(this.state.winner || this.state.draw)}
+                value={ZERO_WIDTH_SPACE}
+              />
+
+            </div>
 
           </div>
 

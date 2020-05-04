@@ -44,7 +44,28 @@ body {
   margin: 0;
   margin-bottom: -38px;
   box-shadow: 2px 3px 7px -5px #0000005c;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
+
+  .header > .wrapper {
+    display: grid;
+    grid-template-columns: minmax(60px, 150px) max-content minmax(60px, 150px);
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header .btn-show-settings {
+    justify-self: left;
+    align-self: end;
+    background-image: var(--settings-button-background-image-url);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #ffe979; */
+    background-size: 26px;
+  }
 
 .settings-panel {
   border: 1px solid #999;
@@ -67,7 +88,7 @@ body {
 
   .settings-panel .wrapper {
     display: grid;
-    grid-gap: 10px;
+    gap: 10px;
     grid-template-columns: auto auto;
   }
 
@@ -116,9 +137,8 @@ button {
 h1 {
   font-size: 50px;
   font-family: 'Shadows Into Light', cursive;
-  margin-top: 20px;
-  margin-bottom: 0px;
-  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 /* themes */
@@ -130,6 +150,7 @@ h1 {
   --button-background-color-disabled: transparent;
   --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
   --square-background-image-url-value-o: url("./img/theme-default/glyph-o.svg");
+  --settings-button-background-image-url: url("./img/theme-default/settings.svg");
 }
 
 .theme-dark {

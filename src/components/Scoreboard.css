@@ -1,4 +1,5 @@
 .score-board {
+  grid-column-start: 2;
   margin: 0 auto 0 auto;
   display: grid;
   grid-template-columns: auto auto;
