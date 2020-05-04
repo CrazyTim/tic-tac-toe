@@ -301,19 +301,6 @@ export default class App extends React.Component {
             />
 
           </div>
-
-          <Button
-            onClick={() => {
-              //console.log(this.state.winningSquares);
-              console.log(this.state.settings);
-              //console.log(this.state.history[0]);
-              //console.log(this.defaultState.history[0]);
-              console.log(this.state.inputs);
-            }}
-            hidden
-            value='log'
-          />
-
         </div>
       </div>
     );
