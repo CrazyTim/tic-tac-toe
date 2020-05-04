@@ -63,7 +63,7 @@ body {
     background-image: var(--settings-button-background-image-url);
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #ffe979;
+    background-color: #ffffff66;
     background-size: 26px;
   }
 
@@ -89,7 +89,7 @@ body {
 
   .settings-panel .inner-wrapper > .btn {
     margin-top: 10px;
-    background-color: #ffe979;
+    background-color: #ffffff66;
   }
 
   .settings-panel .wrapper {
