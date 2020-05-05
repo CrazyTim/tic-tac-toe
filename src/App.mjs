@@ -34,6 +34,7 @@ export default class App extends React.Component {
       loaded: false,
       gui: {
         settingsPanelHeight: 0,
+        gameOverTimerElapsed: 0,
       },
       isSettingsPanelVisible: false,
     };
@@ -174,9 +175,12 @@ export default class App extends React.Component {
   }
 
   handleClick_Square(i) {
+
     // get history from the beginning until currentTurn
     const currentHistory = this.state.history.slice(0, this.state.currentTurn + 1);
+
     const squares = clone(currentHistory[this.state.currentTurn].squares);
+    const gui = clone(this.state.gui);
 
     // ignore a click if there is a winner or if this square has already been filled
     if (this.state.winner || squares[i]) {
@@ -213,7 +217,27 @@ export default class App extends React.Component {
 
     const currentTurn = this.state.currentTurn + 1;
 
+    // start end game animation
+    if (winner || draw) {
+
+      gui.gameOverTimerElapsed = 0.200;
+
+      this.gameOverTimer = setInterval( () => {
+
+        if (this.state.gui.gameOverTimerElapsed >= 1000) {
+          clearInterval(this.gameOverTimer);
+          this.resetBoard();
+        } else {
+          const gui = clone(this.state.gui);
+          gui.gameOverTimerElapsed += 200;
+          this.setState({gui});
+        }
+
+      }, 200);
+    }
+
     this.setState({
+      gui: gui,
       history: history,
       currentTurn: currentTurn,
       xIsNext: !this.state.xIsNext,
@@ -324,16 +348,9 @@ export default class App extends React.Component {
           <div className='status'>{status}</div>
 
           <Button
-            className='btn-play-again'
-            onClick={this.resetBoard.bind(this)}
-            hidden={!(this.state.winner || this.state.draw)}
-            value='Play Again'
-          />
-
-          <Button
             className='btn-undo'
             onClick={this.undo.bind(this, 1)}
-            hidden={this.state.currentTurn === 0}
+            hidden={this.state.currentTurn === 0 || (this.state.winner !== null || this.state.draw)}
             value='Undo'
           />
 
