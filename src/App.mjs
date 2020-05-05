@@ -36,7 +36,6 @@ export default class App extends React.Component {
         settingsPanelHeight: 0,
         gameOverTimerElapsed: 0,
       },
-      isSettingsPanelVisible: false,
     };
 
     const defaultInputState = {
@@ -212,8 +211,8 @@ export default class App extends React.Component {
     }
 
     const history = currentHistory.concat([{
-        squares: squares,
-      }])
+      squares: squares,
+    }])
 
     const currentTurn = this.state.currentTurn + 1;
 
@@ -262,7 +261,6 @@ export default class App extends React.Component {
 
     const gameWrapperClassName = ClassNames('game-wrapper', 'theme-default', {
       'loaded': this.state.loaded,
-      'shown': this.state.isSettingsPanelVisible,
     });
 
     const settingsPanelStyle = {
@@ -286,7 +284,6 @@ export default class App extends React.Component {
               <Button
                 className='btn-show-settings'
                 onClick={this.handleClick_btnSettings.bind(this)}
-                //hidden={!(this.state.winner || this.state.draw)}
                 value={ZERO_WIDTH_SPACE}
               />
 

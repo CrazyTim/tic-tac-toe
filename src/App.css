@@ -63,7 +63,6 @@ body {
     background-image: var(--settings-button-background-image-url);
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #ffffff66;
     background-size: 26px;
   }
 
@@ -89,7 +88,6 @@ body {
 
   .settings-panel .inner-wrapper > .btn {
     margin-top: 10px;
-    background-color: #ffffff66;
   }
 
   .settings-panel .wrapper {
@@ -151,7 +149,7 @@ h1 {
 
 .theme-default {
   --button-color-disabled: #00000052;
-  --button-background-color: transparent;
+  --button-background-color: #ffffff66;
   --button-background-color-hover: #f3f3f3;
   --button-background-color-disabled: transparent;
   --button-border-color: #0000004a;
