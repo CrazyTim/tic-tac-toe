@@ -375,7 +375,6 @@ export default class App extends React.Component {
                 <Button
                   className='btn-save-settings'
                   onClick={this.handleClick_btnSaveSettings.bind(this)}
-                  disabled={this.disable_btnSaveSettings()}
                   value='Save'
                 />
               </div>
