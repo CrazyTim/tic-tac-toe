@@ -1,0 +1,80 @@
+/* themes */
+
+.theme-banana {
+  --game-font-family: Arial, sans-serif;
+  --game-font-size: 16px;
+  --game-background-color: inherit;
+  --game-color: inherit;
+
+  --header-background-color: #ffee99;
+  --header-title-font-family: 'Shadows Into Light', cursive;
+
+  --button-color: black;
+  --button-color-disabled: #00000052;
+  --button-background-color: #ffffff99;
+  --button-background-color-hover: #ffe979;
+  --button-background-color-disabled: transparent;
+  --button-border-color: #0000004a;
+  --button-border-radius: 3px;
+
+  --square-border: 1px solid #adadad;
+  --square-background-image-url-value-x: url("./img/theme-banana/glyph-x.svg");
+  --square-background-image-url-value-o: url("./img/theme-banana/glyph-o.svg");
+  --square-background-color-win: #bbffbb;
+
+  --score-board-player-background-color: #ffe979;
+  --score-board-score-background-color: #fff;
+  --score-board-score-font-size: 20px;
+
+  --settings-button-background-image-url: url("./img/theme-banana/settings.svg");
+
+  --board-border: solid 2px #7d7d7d;
+  --board-border-radius: 5px;
+  --board-background-color: white;
+  --board-shadow: 2px 3px 7px -5px #0000005c;
+  --board-padding: 0;
+}
+
+.theme-bit {
+  --game-font-family: 'VT323', monospace;
+  --game-font-size: 20px;
+  --game-background-color: black;
+  --game-color: white;
+
+  --header-background-color: inherit;
+  --header-title-font-family: inherit;
+
+  --button-color: white;
+  --button-color-disabled: darkred;
+  --button-background-color: black;
+  --button-background-color-hover: blue;
+  --button-background-color-disabled: transparent;
+  --button-border-color: pink;
+  --button-border-radius: 0;
+
+  --square-border: 3px solid white;
+  --square-background-image-url-value-x: url("./img/theme-bit/glyph-x.svg");
+  --square-background-image-url-value-o: url("./img/theme-bit/glyph-o.svg");
+  --square-background-color-win: blue;
+
+  --settings-button-background-image-url: url("./img/theme-bit/settings.svg");
+
+  --score-board-player-background-color: black;
+  --score-board-score-background-color: blacks;
+  --score-board-score-font-size: 30px;
+
+  --board-border: 0;
+  --board-border-radius: 0;
+  --board-background-color: black;
+  --board-shadow: none;
+  --board-padding: 20px;
+}
+
+.theme-unicorn {
+}
+
+.theme-wood {
+}
+
+.theme-retro {
+}

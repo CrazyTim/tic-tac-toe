@@ -1,23 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'); /* theme-default */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /* theme-bit */
 
 * {
   box-sizing: content-box;
   user-select: none;
   cursor: default;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-family: var(--game-font-family);
+  font-size: var(--game-font-size);
 }
 
-body {
+body, html {
   margin: 0;
+  height: 100%;
+}
+
+#root{
+  height: 100%;
 }
 
 .game-wrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   opacity: 0;
   transition: opacity 1s;
+  background-color: var(--game-background-color);
+  overflow-y: scroll;
 }
 
 .game-wrapper.loaded {
@@ -30,6 +39,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
+  color: var(--game-color);
 }
 
 .game > * {
@@ -39,7 +49,7 @@ body {
 .header {
   align-self: stretch;
   align-content: center;
-  background-color: #ffee99;
+  background-color: var(--header-background-color);
   padding-bottom: 44px;
   margin: 0;
   margin-bottom: -38px;
@@ -76,7 +86,7 @@ body {
 }
 
   .settings-panel .inner-wrapper {
-    padding: 30px 0 10px;
+    padding: 35px 0 10px;
     justify-self: center;
   }
 
@@ -140,26 +150,7 @@ button {
 
 h1 {
   font-size: 50px;
-  font-family: 'Shadows Into Light', cursive;
+  font-family: var(--header-title-font-family);
   margin-top: 40px;
   margin-bottom: 10px;
-}
-
-/* themes */
-
-.theme-default {
-  --button-color-disabled: #00000052;
-  --button-background-color: #ffffff66;
-  --button-background-color-hover: #ffe979;
-  --button-background-color-disabled: transparent;
-  --button-border-color: #0000004a;
-  --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
-  --square-background-image-url-value-o: url("./img/theme-default/glyph-o.svg");
-  --settings-button-background-image-url: url("./img/theme-default/settings.svg");
-}
-
-.theme-dark {
-}
-
-.theme-retro {
 }

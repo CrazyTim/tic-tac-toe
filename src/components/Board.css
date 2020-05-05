@@ -1,11 +1,12 @@
 .board {
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: var(--board-border-radius);
   margin-top: 20px !important;
   margin-bottom: 20px !important;
-  border: solid 2px #7d7d7d;
-  box-shadow: 2px 3px 7px -5px #0000005c;
-  background-color: white;
+  border: var(--board-border);
+  box-shadow: var(--board-shadow);
+  background-color: var(--board-background-color);
+  padding: var(--board-padding);
 }
 
 .board .board-row:first-of-type .square {
@@ -19,8 +20,8 @@
 .square {
   width: 62px;
   height: 60px;
-  background: #fff;
-  border: 1px solid #adadad;
+  background: transparent;
+  border: var(--square-border);
   border-bottom: none;
   border-right: none;
   float: left;
@@ -53,21 +54,21 @@
   /* only show button hover effects if the device supports it (otherwise it looks silly) */
 
   .square:not(.disabled):hover {
-    background-color: #f0f0f0;
+    background-color: var(--button-background-color-hover);
   }
 
   .square.disabled:hover {
-    background-color: #fff;
+    background-color: var(--button-background-color);
   }
 
   .square.winner:hover {
-    background-color: #bbffbb;
+    background-color: var(--square-background-color-win);
   }
 
 }
 
 .square.winner {
-  background-color: #bbffbb;
+  background-color: var(--square-background-color-win);
 }
 
 .square.value-x {

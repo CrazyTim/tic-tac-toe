@@ -1,4 +1,4 @@
-.btn {
+.dropdown {
   background-color: var(--button-background-color);
   padding: 5px 15px;
   border: none;
@@ -10,7 +10,7 @@
   color: var(--button-color);
 }
 
-.btn.disabled {
+.dropdown.disabled {
   cursor: default;
   outline: 0;
   color: var(--button-color-disabled);
@@ -21,18 +21,18 @@
 
   /* only show button hover effects if the device supports it (otherwise it looks silly) */
 
-  .btn:not(.disabled):hover {
+  .dropdown:not(.disabled):hover {
     background-color: var(--button-background-color-hover);
   }
 
 }
 
-.btn.hidden {
+.dropdown.hidden {
   display: none;
 }
 
 @media only screen and (max-width: 800px) {
-  .btn {
+  .dropdown {
     padding: 10px 20px;
   }
 }

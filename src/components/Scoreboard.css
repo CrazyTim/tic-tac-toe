@@ -7,11 +7,6 @@
   justify-content: center;
 }
 
-.score-board span:nth-of-type(2){
-  margin: 0 0 0 10px;
-  font-weight: bold;
-}
-
 .score-board .winner {
   /*background-color: lightgreen;
   transition: background-color .5s .1s;*/
@@ -19,7 +14,7 @@
 
 .score-board .player {
   border: solid 1px var(--button-border-color);
-  border-radius: 3px;
+  border-radius: var(--button-border-radius);
   overflow: hidden;
   box-shadow: 2px 3px 7px -5px #0000005c;
 }
@@ -27,25 +22,25 @@
 .score-board .player div {
   padding: 5px 20px 5px 20px;
   text-align: center;
-  font-size: 20px;
+  font-size: var(--score-board-score-font-size);
 }
 
 .score-board .player .title {
-  height: 20px;
-  background-color: #ffe979;
+  height: var(--score-board-score-font-size);
+  background-color: var(--score-board-player-background-color);
   background-size: 18px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .score-board .player .score {
-  background-color: #fff;
+  background-color: var(--score-board-score-background-color);
 }
 
 .score-board .player-x .title {
-  background-image: url("../img/theme-default/glyph-x.svg");
+  background-image: var(--square-background-image-url-value-x);
 }
 
 .score-board .player-o .title {
-  background-image: url("../img/theme-default/glyph-o.svg");
+  background-image: var(--square-background-image-url-value-o);
 }

@@ -7,7 +7,9 @@ import Board from './components/Board.mjs';
 import Button from './components/Button.mjs';
 import Scoreboard from './components/Scoreboard.mjs';
 import InputStepper from './components/InputStepper.mjs';
+import Dropdown from './components/Dropdown.mjs';
 import './App.css';
+import './themes.css';
 
 export default class App extends React.Component {
 
@@ -35,6 +37,19 @@ export default class App extends React.Component {
         loaded: false, // set to true when window has loaded
         settingsPanelHeight: 0,
         gameOverTimerElapsed: 0,
+        themes: [
+          {
+            id: 0,
+            name: 'Banana',
+            className: 'theme-banana',
+          },
+          {
+            id: 1,
+            name: 'Eight Bit',
+            className: 'theme-bit',
+          },
+        ],
+        selectedThemeId : 0,
       },
     };
 
@@ -175,6 +190,29 @@ export default class App extends React.Component {
 
   }
 
+  getSelectedThemeClassName() {
+    const found = this.state.gui.themes.find( item => item.id === this.state.gui.selectedThemeId );
+    if (found) {
+      return found.className;
+    } else {
+      return 'theme-default'; // shouldn't happen == dodgy default state
+    }
+  }
+
+  handleChange_dropdownTheme(event) {
+    const newThemeId = parseInt(event.target.value);
+    console.log(newThemeId);
+    const gui = clone(this.state.gui);
+    gui.selectedThemeId = newThemeId;
+
+    this.setState({gui}, () => {
+      // resize settings panel to fit the new theme
+      const gui = clone(this.state.gui);
+      gui.settingsPanelHeight = this.settingsPanel.scrollHeight;
+      this.setState({gui});
+    });
+  }
+
   handleClick_Square(i) {
 
     // get history from the beginning until currentTurn
@@ -261,7 +299,7 @@ export default class App extends React.Component {
       status = 'Player ' + (this.state.xIsNext ? 'X' : 'O') + '\'s turn';
     }
 
-    const gameWrapperClassName = ClassNames('game-wrapper', 'theme-default', {
+    const gameWrapperClassName = ClassNames('game-wrapper', this.getSelectedThemeClassName(), {
       'loaded': this.state.gui.loaded,
     });
 
@@ -323,6 +361,15 @@ export default class App extends React.Component {
                     minValue={3}
                     value={this.state.inputs.txtNumCells}
                   />
+
+                  <label>Theme:</label>
+                  <Dropdown
+                    className='dropdown-theme'
+                    onChange={this.handleChange_dropdownTheme.bind(this)}
+                    values={this.state.gui.themes}
+                    selectedValue={this.state.gui.selectedThemeId}
+                  />
+
                 </div>
 
                 <Button
