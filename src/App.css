@@ -150,7 +150,7 @@ h1 {
 .theme-default {
   --button-color-disabled: #00000052;
   --button-background-color: #ffffff66;
-  --button-background-color-hover: #f3f3f3;
+  --button-background-color-hover: #ffe979;
   --button-background-color-disabled: transparent;
   --button-border-color: #0000004a;
   --square-background-image-url-value-x: url("./img/theme-default/glyph-x.svg");
