@@ -31,8 +31,8 @@ export default class App extends React.Component {
         X: 0,
         O: 0,
       },
-      loaded: false,
       gui: {
+        loaded: false, // set to true when window has loaded
         settingsPanelHeight: 0,
         gameOverTimerElapsed: 0,
       },
@@ -64,7 +64,9 @@ export default class App extends React.Component {
                 };
 
     window.onload = () => {
-      this.setState({loaded: true});
+      const gui = clone(this.state.gui);
+      gui.loaded = true;
+      this.setState({gui});
     };
 
   }
@@ -260,7 +262,7 @@ export default class App extends React.Component {
     }
 
     const gameWrapperClassName = ClassNames('game-wrapper', 'theme-default', {
-      'loaded': this.state.loaded,
+      'loaded': this.state.gui.loaded,
     });
 
     const settingsPanelStyle = {
