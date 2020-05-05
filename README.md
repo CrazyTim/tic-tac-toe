@@ -5,7 +5,7 @@
 
 # Tic Tac Toe
 
-Learning React and having fun with the [React Tutorial](https://reactjs.org/tutorial/tutorial.html).
+Learning React while doing the [tutorial](https://reactjs.org/tutorial/tutorial.html), then adding fun features such as themes and adjustable rows/columns :smile:.
 
 View the [live build](https://crazytim.github.io/tic-tac-toe).
 
@@ -29,12 +29,13 @@ For information about deploying a Create React App to GitHub Pages [refer here](
 ## Features
 
 - Fancy styles.
-- A button to reset the board and play again.
+- Themes.
+- The board is automatically reset once the game is over.
+- The winning squares are highlighted green when the game is over.
+- A message is shown when the game is tied.
 - A new win algorithm that allows for a dynamic number of rows, columns, and the number of symbols that you need to get in a line to win. Note that changing this actually breaks the game, but its fun to see it work!
 - User can change some of the settings, including the number of rows and columns.
 - Each player's score is shown above the board.
-- The winning squares are highlighted green when the game is over.
-- A message is shown telling the user when the game is tied.
 - The multiple undo buttons for each turn have been replaced with a single undo button.
 - Components and styles have been separated into their own files.
 - The `Square` component was removed (unnecessary, replaced with a styled `Button`).
