@@ -41,4 +41,4 @@ For information about deploying a Create React App to GitHub Pages [refer here](
 - The `Square` component was removed (unnecessary, replaced with a styled `Button`).
 
 ## Acknowledgements
-- Cog icon adapted from [Octicons](https://github.com/primer/octicons), MIT license.
+- Icons adapted from [Octicons](https://github.com/primer/octicons), MIT license.

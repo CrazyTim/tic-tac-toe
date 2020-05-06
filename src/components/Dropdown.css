@@ -8,6 +8,12 @@
   border: solid 1px var(--button-border-color);
   outline: 0;
   color: var(--button-color);
+  background-image: var(--dropdown-background-image);
+  background-repeat: no-repeat;
+  background-position: center right 10px;
+  background-size: 8px;
+  appearance: none;
+  padding-right: 30px;
 }
 
 .dropdown.disabled {
