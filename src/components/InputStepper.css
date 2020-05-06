@@ -4,8 +4,8 @@
   align-items: center;
   flex-direction: row;
   align-items: stretch;
-  background-color: var(--button-background-color);
-  color: var(--button-color);
+  background-color: var(--input-background-color);
+  color: var(--input-color);
 }
 
 .input-stepper label {
@@ -35,6 +35,7 @@
   overflow: hidden;
   z-index: 1;
   border-radius: var(--button-border-radius);
+  color: var(--input-color);
 }
 
 .input-stepper button:first-of-type {
@@ -49,8 +50,13 @@
   border-left: 0;
 }
 
-.input-stepper button:not(.disabled):hover {
-  background-color: var(--button-background-color-hover);
+@media (hover: hover) {
+
+  /* only show button hover effects if the device supports it (otherwise it looks silly) */
+  .input-stepper button:not(.disabled):hover {
+    background-color: var(--button-background-color-hover);
+  }
+
 }
 
 @media only screen and (max-width: 800px) {

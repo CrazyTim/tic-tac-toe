@@ -1,5 +1,5 @@
 .dropdown {
-  background-color: var(--button-background-color);
+  background-color: var(--input-background-color);
   padding: 5px 15px;
   border: none;
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   border-radius: var(--button-border-radius);
   border: solid 1px var(--button-border-color);
   outline: 0;
-  color: var(--button-color);
+  color: var(--input-color);
   background-image: var(--dropdown-background-image);
   background-repeat: no-repeat;
   background-position: center right 10px;
@@ -26,7 +26,6 @@
 @media (hover: hover) {
 
   /* only show button hover effects if the device supports it (otherwise it looks silly) */
-
   .dropdown:not(.disabled):hover {
     background-color: var(--button-background-color-hover);
   }

@@ -72,9 +72,9 @@
 }
 
 .square.value-x {
-  background-image: var(--square-background-image-url-value-x);
+  background-image: var(--square-background-image-url-player-x);
 }
 
 .square.value-o {
-  background-image: var(--square-background-image-url-value-o);
+  background-image: var(--square-background-image-url-player-o);
 }

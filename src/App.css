@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap'); /* theme-default */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /* theme-bit */
-
 * {
   box-sizing: content-box;
   user-select: none;
   cursor: default;
   font-family: var(--game-font-family);
   font-size: var(--game-font-size);
+  letter-spacing: var(--game-font-letter-spacing);
 }
 
 body, html {

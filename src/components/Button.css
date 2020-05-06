@@ -8,6 +8,7 @@
   border: solid 1px var(--button-border-color);
   outline: 0;
   color: var(--button-color);
+  -webkit-tap-highlight-color: var(--game-tap-highlight-color);
 }
 
 .btn.disabled {
@@ -20,7 +21,6 @@
 @media (hover: hover) {
 
   /* only show button hover effects if the device supports it (otherwise it looks silly) */
-
   .btn:not(.disabled):hover {
     background-color: var(--button-background-color-hover);
   }

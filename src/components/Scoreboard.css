@@ -3,7 +3,7 @@
   margin: 0 auto 0 auto;
   display: grid;
   grid-template-columns: auto auto;
-  grid-gap: 20px;
+  gap: var(--scoreboard-gap);
   justify-content: center;
 }
 
@@ -38,9 +38,9 @@
 }
 
 .score-board .player-x .title {
-  background-image: var(--square-background-image-url-value-x);
+  background-image: var(--score-board-background-image-url-player-x);
 }
 
 .score-board .player-o .title {
-  background-image: var(--square-background-image-url-value-o);
+  background-image: var(--score-board-background-image-url-player-o);
 }
