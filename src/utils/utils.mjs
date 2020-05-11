@@ -1,5 +1,6 @@
-export const ZERO_WIDTH_SPACE = '\u200B';
-export const NON_BREAKING_SAPCE = '\u00A0';
+// sometimes html entities in JSX are escaped, so we need to use unicode in a JavaScript string
+export const NON_BREAKING_SPACE = '\u00A0'; // &nbsp;
+export const ZERO_WIDTH_SPACE = '\u200B'; // &ZeroWidthSpace;
 
 export function clone(x) {
   // clone an array or object
