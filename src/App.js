@@ -75,7 +75,7 @@ export default class App extends React.Component {
         },
         {
           id: 2,
-          name: 'Unicorns',
+          name: 'Unicorn',
           className: 'theme-unicorn',
         },
       ],
