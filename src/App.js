@@ -1,13 +1,13 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import {clone, ZERO_WIDTH_SPACE} from './utils/utils.mjs'
-import checkWin from './utils/check-win.mjs'
-import Board from './components/Board.mjs';
-import Button from './components/Button.mjs';
-import Scoreboard from './components/Scoreboard.mjs';
-import InputStepper from './components/InputStepper.mjs';
-import Dropdown from './components/Dropdown.mjs';
+import {clone, ZERO_WIDTH_SPACE} from './utils/utils.js'
+import checkWin from './utils/check-win.js'
+import Board from './components/Board.js';
+import Button from './components/Button.js';
+import Scoreboard from './components/Scoreboard.js';
+import InputStepper from './components/InputStepper.js';
+import Dropdown from './components/Dropdown.js';
 import './App.css';
 import './themes.css';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Button from './Button.mjs';
+import Button from './Button.js';
 import './Board.css';
 
 const Board = (props) => {
