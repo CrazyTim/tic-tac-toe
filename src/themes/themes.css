@@ -34,21 +34,21 @@
   --input-background-color: #fff;
   --input-color: inherit;
 
-  --dropdown-background-image: url('./themes/banana/triangle-down.svg');
+  --dropdown-background-image: url('./banana/triangle-down.svg');
 
   --square-border: 1px solid #adadad;
-  --square-background-image-url-player-x: url("./themes/banana/glyph-x.svg");
-  --square-background-image-url-player-o: url("./themes/banana/glyph-o.svg");
+  --square-background-image-url-player-x: url("./banana/glyph-x.svg");
+  --square-background-image-url-player-o: url("./banana/glyph-o.svg");
   --square-background-color-win: #bbffbb;
 
   --score-board-player-background-color: #ffe979;
   --score-board-score-background-color: #fff;
-  --score-board-background-image-url-player-x: url("./themes/banana/glyph-x.svg");
-  --score-board-background-image-url-player-o: url("./themes/banana/glyph-o.svg");
+  --score-board-background-image-url-player-x: url("./banana/glyph-x.svg");
+  --score-board-background-image-url-player-o: url("./banana/glyph-o.svg");
   --score-board-score-font-size: 20px;
   --scoreboard-gap: 20px;
 
-  --settings-button-background-image-url: url("./themes/banana/settings.svg");
+  --settings-button-background-image-url: url("./banana/settings.svg");
 
   --board-border: solid 2px #7d7d7d;
   --board-border-radius: 5px;
@@ -79,19 +79,19 @@
   --input-background-color: lightgrey;
   --input-color: #000;
 
-  --dropdown-background-image: url('./themes/bit/triangle-down.svg');
+  --dropdown-background-image: url('./bit/triangle-down.svg');
 
   --square-border: 3px solid white;
-  --square-background-image-url-player-x: url("./themes/bit/glyph-x.svg");
-  --square-background-image-url-player-o: url("./themes/bit/glyph-o.svg");
+  --square-background-image-url-player-x: url("./bit/glyph-x.svg");
+  --square-background-image-url-player-o: url("./bit/glyph-o.svg");
   --square-background-color-win: blue;
 
-  --settings-button-background-image-url: url("./themes/bit/settings.svg");
+  --settings-button-background-image-url: url("./bit/settings.svg");
 
   --score-board-player-background-color: white;
   --score-board-score-background-color: blacks;
-  --score-board-background-image-url-player-x: url("./themes/bit/glyph-x-small.svg");
-  --score-board-background-image-url-player-o: url("./themes/bit/glyph-o-small.svg");
+  --score-board-background-image-url-player-x: url("./bit/glyph-x-small.svg");
+  --score-board-background-image-url-player-o: url("./bit/glyph-o-small.svg");
   --score-board-score-font-size: 30px;
   --scoreboard-gap: 50px;
 

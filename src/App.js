@@ -9,7 +9,7 @@ import Scoreboard from './components/Scoreboard.js';
 import InputStepper from './components/InputStepper.js';
 import Dropdown from './components/Dropdown.js';
 import './App.css';
-import './themes.css';
+import './themes/themes.css';
 
 export default class App extends React.Component {
 
