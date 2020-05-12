@@ -18,27 +18,23 @@
 }
 
 .square {
-  width: 62px;
-  height: 60px;
+  width: var(--square-width);
+  height: var(--square-width);
   background: transparent;
   border: var(--square-border);
   border-bottom: none;
   border-right: none;
   float: left;
-  font-size: 50px;
-  font-weight: 300;
-  font-family: 'Mali';
-  line-height: 50px;
   padding: 0;
-  padding-bottom: 5px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease-out;
   border-radius: 0;
   overflow: hidden;
-  background-size: 45px;
+  background-size: var(--square-background-size);
   background-position: center;
   background-repeat: no-repeat;
+  box-sizing: content-box;
 }
 
 .square:focus {

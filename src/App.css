@@ -55,6 +55,10 @@ body, html {
   display: grid;
   align-items: center;
   justify-items: center;
+  background-image: var(--header-background-image);
+  background-repeat: no-repeat;
+  background-size: var(--header-background-size);
+  background-position: var(--header-background-position);
 }
 
   .header > .wrapper {

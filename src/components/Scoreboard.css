@@ -13,14 +13,14 @@
 }
 
 .score-board .player {
-  border: solid 1px var(--button-border-color);
+  border: var(--score-board-player-border);
   border-radius: var(--button-border-radius);
   overflow: hidden;
   box-shadow: 2px 3px 7px -5px #0000005c;
 }
 
 .score-board .player div {
-  padding: 5px 20px 5px 20px;
+  padding: var(--score-board-player-padding);
   text-align: center;
   font-size: var(--score-board-score-font-size);
 }
@@ -28,7 +28,7 @@
 .score-board .player .title {
   height: var(--score-board-score-font-size);
   background-color: var(--score-board-player-background-color);
-  background-size: 18px;
+  background-size: var(--score-board-player-background-size);
   background-position: center;
   background-repeat: no-repeat;
 }

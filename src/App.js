@@ -73,6 +73,11 @@ export default class App extends React.Component {
           name: 'Eight Bit',
           className: 'theme-bit',
         },
+        {
+          id: 2,
+          name: 'Unicorns',
+          className: 'theme-unicorn',
+        },
       ],
     };
 
