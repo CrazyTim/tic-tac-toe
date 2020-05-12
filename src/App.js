@@ -55,9 +55,9 @@ export default class App extends React.Component {
 
     const defaultInputState = {
       inputs: {
-        txtNumRows: defaultState.settings.numRows,
-        txtNumCols: defaultState.settings.numCols,
-        txtNumCells: defaultState.settings.numCellsInALineToWin,
+        inputStepperRows: defaultState.settings.numRows,
+        inputStepperCols: defaultState.settings.numCols,
+        inputStepperCells: defaultState.settings.numCellsInALineToWin,
       },
     }
 
@@ -89,9 +89,9 @@ export default class App extends React.Component {
   handleClick_btnSaveSettings() {
 
     const settings = clone(this.state.settings);
-    settings.numRows = parseInt(this.state.inputs.txtNumRows);
-    settings.numCols = parseInt(this.state.inputs.txtNumCols);
-    settings.numCellsInALineToWin = parseInt(this.state.inputs.txtNumCells);
+    settings.numRows = this.state.inputs.inputStepperRows;
+    settings.numCols = this.state.inputs.inputStepperCols;
+    settings.numCellsInALineToWin = this.state.inputs.inputStepperCells;
 
     // initalise new default game state
     const defaultGameState = clone(this.state.defaultGameState);
@@ -112,23 +112,23 @@ export default class App extends React.Component {
 
   }
 
-  handleClick_txtNumRows(increment) {
+  handleClick_inputStepperRows(increment) {
     const inputs = clone(this.state.inputs);
-    inputs.txtNumRows += increment;
-    inputs.txtNumCells = Math.min(Math.max(inputs.txtNumRows, inputs.txtNumCols), inputs.txtNumCells); // ensure txtNumCells doesn't exceed number of rows/columns
+    inputs.inputStepperRows += increment;
+    inputs.inputStepperCells = Math.min(Math.max(inputs.inputStepperRows, inputs.inputStepperCols), inputs.inputStepperCells); // ensure cells doesn't exceed number of rows/columns
     this.setState({inputs});
   }
 
-  handleClick_txtNumCols(increment) {
+  handleClick_inputStepperCols(increment) {
     const inputs = clone(this.state.inputs);
-    inputs.txtNumCols += increment;
-    inputs.txtNumCells = Math.min(Math.max(inputs.txtNumRows, inputs.txtNumCols), inputs.txtNumCells); // ensure txtNumCells doesn't exceed number of rows/columns
+    inputs.inputStepperCols += increment;
+    inputs.inputStepperCells = Math.min(Math.max(inputs.inputStepperRows, inputs.inputStepperCols), inputs.inputStepperCells); // ensure cells doesn't exceed number of rows/columns
     this.setState({inputs});
   }
 
-  handleClick_txtNumCells(increment) {
+  handleClick_inputStepperCells(increment) {
     const inputs = clone(this.state.inputs);
-    inputs.txtNumCells += increment;
+    inputs.inputStepperCells += increment;
     this.setState({inputs});
   }
 
@@ -152,9 +152,9 @@ export default class App extends React.Component {
     const s = this.state
 
     // detect if state will change
-    const changed = (s.inputs.txtNumRows !== s.settings.numRows ||
-                     s.inputs.txtNumCols !== s.settings.numCols ||
-                     s.inputs.txtNumCells !== s.settings.numCellsInALineToWin);
+    const changed = (s.inputs.inputStepperRows !== s.settings.numRows ||
+                     s.inputs.inputStepperCols !== s.settings.numCols ||
+                     s.inputs.inputStepperCells !== s.settings.numCellsInALineToWin);
 
      // validate inputs
     const valid = true;
@@ -337,29 +337,29 @@ export default class App extends React.Component {
 
                   <label>Rows:</label>
                   <InputStepper
-                    className='txt-num-rows'
-                    onClick={this.handleClick_txtNumRows.bind(this)}
+                    className='input-stepper-rows'
+                    onClick={this.handleClick_inputStepperRows.bind(this)}
                     maxValue={5}
                     minValue={3}
-                    value={this.state.inputs.txtNumRows}
+                    value={this.state.inputs.inputStepperRows}
                   />
 
                   <label>Columns:</label>
                   <InputStepper
-                    className='txt-num-cols'
-                    onClick={this.handleClick_txtNumCols.bind(this)}
+                    className='input-stepper-columns'
+                    onClick={this.handleClick_inputStepperCols.bind(this)}
                     maxValue={5} // any more than 5 and the layout will break on small screens
                     minValue={3}
-                    value={this.state.inputs.txtNumCols}
+                    value={this.state.inputs.inputStepperCols}
                   />
 
                   <label>Cells in a line to win:</label>
                   <InputStepper
-                    className='txt-num-cells'
-                    onClick={this.handleClick_txtNumCells.bind(this)}
-                    maxValue={Math.max(this.state.inputs.txtNumRows, this.state.inputs.txtNumCols)}
+                    className='input-stepper-cells'
+                    onClick={this.handleClick_inputStepperCells.bind(this)}
+                    maxValue={Math.max(this.state.inputs.inputStepperRows, this.state.inputs.inputStepperCols)}
                     minValue={3}
-                    value={this.state.inputs.txtNumCells}
+                    value={this.state.inputs.inputStepperCells}
                   />
 
                   <label>Theme:</label>
