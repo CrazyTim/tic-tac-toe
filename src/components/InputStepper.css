@@ -6,6 +6,7 @@
   align-items: stretch;
   background-color: var(--input-background-color);
   color: var(--input-color);
+  border-radius: var(--button-border-radius);
 }
 
 .input-stepper label {
