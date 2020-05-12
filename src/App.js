@@ -23,7 +23,25 @@ export default class App extends React.Component {
       this.settingsPanel = element;
     };
 
-    const defaultState = {
+    const defaultNumRows = 3;
+    const defaultNumCols = 3;
+    const defaultNumCellsInALineToWin = 3;
+
+    // define the default state for a game separately so we can reset it when the game is over
+    const defaultGameState = {
+      history: [{
+        squares: Array(defaultNumRows * defaultNumCols).fill(null),
+      }],
+      currentTurn: 0,
+      xIsNext: true,
+      winner: null,
+      winningSquares: [],
+      draw: false,
+    };
+
+    this.state = {
+      ...defaultGameState,
+      defaultGameState,
       settings: {
         numRows: 3,
         numCols: 3,
@@ -33,50 +51,30 @@ export default class App extends React.Component {
         X: 0,
         O: 0,
       },
+      inputs: {
+        dropdownThemeId: 0,
+        inputStepperRows: defaultNumRows,
+        inputStepperCols: defaultNumCols,
+        inputStepperCells: defaultNumCellsInALineToWin,
+      },
       gui: {
         loaded: false, // set to true when window has loaded
         settingsPanelHeight: 0,
         gameOverTimerElapsed: 0,
-        themes: [
-          {
-            id: 0,
-            name: 'Banana',
-            className: 'theme-banana',
-          },
-          {
-            id: 1,
-            name: 'Eight Bit',
-            className: 'theme-bit',
-          },
-        ],
-        dropdownThemeId: 0,
       },
+      themes: [
+        {
+          id: 0,
+          name: 'Banana',
+          className: 'theme-banana',
+        },
+        {
+          id: 1,
+          name: 'Eight Bit',
+          className: 'theme-bit',
+        },
+      ],
     };
-
-    const defaultInputState = {
-      inputs: {
-        inputStepperRows: defaultState.settings.numRows,
-        inputStepperCols: defaultState.settings.numCols,
-        inputStepperCells: defaultState.settings.numCellsInALineToWin,
-      },
-    }
-
-    const defaultGameState = {
-      history: [{
-        squares: Array(defaultState.settings.numRows * defaultState.settings.numCols).fill(null),
-      }],
-      currentTurn: 0,
-      xIsNext: true,
-      winner: null,
-      winningSquares: [],
-      draw: false,
-    };
-
-    this.state = {...defaultState,
-                  ...defaultInputState,
-                  ...defaultGameState,
-                  defaultGameState,
-                };
 
     window.onload = () => {
       const gui = clone(this.state.gui);
@@ -191,7 +189,7 @@ export default class App extends React.Component {
   }
 
   getSelectedThemeClassName() {
-    const found = this.state.gui.themes.find( item => item.id === this.state.gui.dropdownThemeId );
+    const found = this.state.themes.find( item => item.id === this.state.inputs.dropdownThemeId );
     if (found) {
       return found.className;
     } else {
@@ -200,17 +198,19 @@ export default class App extends React.Component {
   }
 
   handleChange_dropdownTheme(event) {
-    const newThemeId = parseInt(event.target.value);
-    console.log(newThemeId);
-    const gui = clone(this.state.gui);
-    gui.dropdownThemeId = newThemeId;
 
-    this.setState({gui}, () => {
+    const newThemeId = parseInt(event.target.value);
+
+    const inputs = clone(this.state.inputs);
+    inputs.dropdownThemeId = newThemeId;
+
+    this.setState({inputs}, () => {
       // resize settings panel to fit the new theme
       const gui = clone(this.state.gui);
       gui.settingsPanelHeight = this.settingsPanel.scrollHeight;
       this.setState({gui});
     });
+
   }
 
   handleClick_Square(i) {
@@ -366,8 +366,8 @@ export default class App extends React.Component {
                   <Dropdown
                     className='dropdown-theme'
                     onChange={this.handleChange_dropdownTheme.bind(this)}
-                    values={this.state.gui.themes}
-                    selectedValue={this.state.gui.dropdownThemeId}
+                    values={this.state.themes}
+                    selectedValue={this.state.inputs.dropdownThemeId}
                   />
 
                 </div>
