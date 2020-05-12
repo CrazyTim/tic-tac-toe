@@ -86,27 +86,32 @@ export default class App extends React.Component {
 
   handleClick_btnSaveSettings() {
 
-    const settings = clone(this.state.settings);
-    settings.numRows = this.state.inputs.inputStepperRows;
-    settings.numCols = this.state.inputs.inputStepperCols;
-    settings.numCellsInALineToWin = this.state.inputs.inputStepperCells;
-
-    // initalise new default game state
-    const defaultGameState = clone(this.state.defaultGameState);
-    defaultGameState.history = [{
-        squares: Array(settings.numRows * settings.numCols).fill(null),
-    }];
-
     // hide settings panel
     const gui = clone(this.state.gui);
     gui.settingsPanelHeight = 0;
 
-    this.setState(
-      {settings, defaultGameState, gui},
-      () => {
-        this.resetBoard();
-      }
-    );
+    // Save settings and reset game only if something has changed
+    // Otherwise the current game will be reset
+    if (this.haveSettingsChanged()) {
+
+      const settings = clone(this.state.settings);
+      settings.numRows = this.state.inputs.inputStepperRows;
+      settings.numCols = this.state.inputs.inputStepperCols;
+      settings.numCellsInALineToWin = this.state.inputs.inputStepperCells;
+
+      // initalise new default game state
+      const defaultGameState = clone(this.state.defaultGameState);
+      defaultGameState.history = [{
+          squares: Array(settings.numRows * settings.numCols).fill(null),
+      }];
+
+      this.setState({settings, defaultGameState, gui},
+        () => { this.resetBoard(); }
+      );
+
+    } else {
+      this.setState({gui});
+    }
 
   }
 
@@ -145,7 +150,7 @@ export default class App extends React.Component {
     this.setState({gui});
   }
 
-  disable_btnSaveSettings() {
+  haveSettingsChanged() {
 
     const s = this.state
 
@@ -154,10 +159,10 @@ export default class App extends React.Component {
                      s.inputs.inputStepperCols !== s.settings.numCols ||
                      s.inputs.inputStepperCells !== s.settings.numCellsInALineToWin);
 
-     // validate inputs
+     // validate inputs (WIP)
     const valid = true;
 
-    return !(changed && valid);
+    return (changed && valid);
 
   }
 
