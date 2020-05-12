@@ -49,7 +49,7 @@ export default class App extends React.Component {
             className: 'theme-bit',
           },
         ],
-        selectedThemeId : 0,
+        dropdownThemeId: 0,
       },
     };
 
@@ -191,7 +191,7 @@ export default class App extends React.Component {
   }
 
   getSelectedThemeClassName() {
-    const found = this.state.gui.themes.find( item => item.id === this.state.gui.selectedThemeId );
+    const found = this.state.gui.themes.find( item => item.id === this.state.gui.dropdownThemeId );
     if (found) {
       return found.className;
     } else {
@@ -203,7 +203,7 @@ export default class App extends React.Component {
     const newThemeId = parseInt(event.target.value);
     console.log(newThemeId);
     const gui = clone(this.state.gui);
-    gui.selectedThemeId = newThemeId;
+    gui.dropdownThemeId = newThemeId;
 
     this.setState({gui}, () => {
       // resize settings panel to fit the new theme
@@ -367,7 +367,7 @@ export default class App extends React.Component {
                     className='dropdown-theme'
                     onChange={this.handleChange_dropdownTheme.bind(this)}
                     values={this.state.gui.themes}
-                    selectedValue={this.state.gui.selectedThemeId}
+                    selectedValue={this.state.gui.dropdownThemeId}
                   />
 
                 </div>
