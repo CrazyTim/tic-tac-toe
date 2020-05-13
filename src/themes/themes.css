@@ -9,12 +9,7 @@
 /* unicorn */
 @import url('https://fonts.googleapis.com/css2?family=Gabriela');
 
-
-/* @font-face {
-  font-family: 'SGK100';
-  src: local('SGK100'), url('./themes/bit/SGK100.ttf') format('truetype');
-} */
-
+/* default theme */
 .theme-banana {
   --game-font-family: Arial, sans-serif;
   --game-font-size: 16px;
@@ -24,14 +19,18 @@
   --game-tap-highlight-color: #8268314f;
 
   --header-background-color: #ffee99;
+  --header-title-margin: 30px 0 10px;
+  --header-title-color: inherit;
+  --header-title-shadow: none;
   --header-title-font-family: 'Shadows Into Light', cursive;
+  --header-shadow: 2px 3px 7px -5px #0000005c;
 
   --button-color: black;
   --button-color-disabled: #00000052;
   --button-background-color: transparent;
   --button-background-color-hover: #ffe979;
   --button-background-color-disabled: transparent;
-  --button-border-color: #0000004a;
+  --button-border: solid 1px #0000004a;
   --button-border-radius: 3px;
 
   --input-background-color: #fff;
@@ -44,11 +43,11 @@
   --square-background-image-url-player-o: url("./banana/glyph-o.svg");
   --square-background-color-win: #bbffbb;
   --square-background-size: 45px;
-  --square-width: 60px;
+  --square-width: 62px;
 
-  --score-board-player-border: solid 1px #0000004a;
-  --score-board-player-padding: 5px 20px;
-  --score-board-player-background-size: 18px;
+  --score-board-player-border: solid 1px #7d7d7d;
+  --score-board-player-padding: 10px 22px;
+  --score-board-player-background-size: 20px;
   --score-board-player-background-color: #ffe979;
   --score-board-score-background-color: #fff;
   --score-board-background-image-url-player-x: url("./banana/glyph-x.svg");
@@ -69,50 +68,55 @@
   --game-font-family: 'VT323';
   --game-font-size: 20px;
   --game-font-letter-spacing: inherit;
-  --game-background-color: black;
+  --game-background-color: #0000aa;
   --game-color: white;
   --game-tap-highlight-color: #0000ff7d;
 
   --header-background-color: inherit;
+  --header-title-margin: 40px 0 20px;
+  --header-title-color: inherit;
+  --header-title-shadow: none;
   --header-title-font-family: inherit;
+  --header-shadow: none;
 
-  --button-color: white;
-  --button-color-disabled: darkred;
-  --button-background-color: black;
-  --button-background-color-hover: blue;
-  --button-background-color-disabled: transparent;
-  --button-border-color: pink;
+  --button-color: #000;
+  --button-color-disabled: #ccc;
+  --button-background-color: #fff;
+  --button-background-color-hover: #55ffff;
+  --button-background-color-disabled: #fff;
+  --button-border: solid 2px #00aaaa;
   --button-border-radius: 0;
 
-  --input-background-color: lightgrey;
+  --input-background-color: #fff;
   --input-color: #000;
 
-  --dropdown-background-image: url('./bit/triangle-down.svg');
+  --dropdown-background-image: url('./banana/triangle-down.svg');
 
-  --square-border: 3px solid white;
+  --square-border: 3px solid #00aaaa;
   --square-background-image-url-player-x: url("./bit/glyph-x.svg");
   --square-background-image-url-player-o: url("./bit/glyph-o.svg");
-  --square-background-color-win: blue;
+  --square-background-color-win: #00ff03;
   --square-background-size: 45px;
   --square-width: 60px;
 
-  --settings-button-background-image-url: url("./bit/settings.svg");
+  --settings-button-background-image-url: url("./banana/settings.svg");
 
-  --score-board-player-border: solid 1px pink;
+  --score-board-player-border: solid 2px #00aaaa;
   --score-board-player-padding: 5px 20px;
   --score-board-player-background-size: 18px;
   --score-board-player-background-color: white;
   --score-board-score-background-color: blacks;
-  --score-board-background-image-url-player-x: url("./bit/glyph-x-small.svg");
-  --score-board-background-image-url-player-o: url("./bit/glyph-o-small.svg");
+  --score-board-background-image-url-player-x: url("./bit/glyph-x.svg");
+  --score-board-background-image-url-player-o: url("./bit/glyph-o.svg");
   --score-board-score-font-size: 30px;
   --scoreboard-gap: 50px;
 
-  --board-border: 0;
+  --board-border: solid 2px #00aaaa;
   --board-border-radius: 0;
-  --board-background-color: black;
-  --board-shadow: none;
+  --board-background-color: #fff;
+  --board-shadow: 20px 20px 0px 3px #000;
   --board-padding: 20px;
+  --board-box-shadow: 0px 0px 0px 3px rgb(255, 255, 255);
 }
 
 .theme-unicorn {
@@ -124,52 +128,58 @@
   --game-tap-highlight-color: #8268314f;
 
   --header-background-color: #fdd4db;
+  --header-title-margin: 50px 0 20px;
+  --header-title-color: #e71a41;
+  --header-title-shadow: 3px 3px 0px #fdd4db;
   --header-title-font-family: 'Gabriela', cursive;
-  --header-background-image: url("./unicorn/rainbow-2.svg");
-  --header-background-size: 550px;
-  --header-background-position: center -90px;
+  --header-shadow: 2px 3px 7px -5px #0000005c;
+  --header-background-image: url("./unicorn/rainbow.png");
+  --header-background-size: 500px;
+  --header-background-position: center -45px;
 
   --button-color: black;
   --button-color-disabled: #00000052;
-  --button-background-color: transparent;
+  --button-background-color: #fff6ff;
   --button-background-color-hover: #a3ecff;
   --button-background-color-disabled: transparent;
-  --button-border-color: #0000004a;
+  --button-border: solid 1px #0000004a;
   --button-border-radius: 5px;
 
-  --input-background-color: #effdfb;
+  --input-background-color: #fff6ff;
   --input-color: inherit;
 
   --dropdown-background-image: url('./banana/triangle-down.svg');
 
-  --square-border: 2px solid #dcb2c9;
-  --square-background-image-url-player-x: url("./unicorn/glyph-x.svg");
-  --square-background-image-url-player-o: url("./unicorn/glyph-o.svg");
+  --square-border: 2px solid #f5a3a7;
+  --square-background-image-url-player-x: url("./unicorn/glyph-x.png");
+  --square-background-image-url-player-o: url("./unicorn/glyph-o.png");
   --square-background-color-win: #fffe86;
   --square-background-size: 50px;
   --square-width: 70px;
 
-  --score-board-player-border: solid 3px #effdfb;
+  --score-board-player-border: solid 1px #f5a3a7;
   --score-board-player-padding: 10px 25px;
   --score-board-player-background-size: 42px;
-  --score-board-player-background-color: #fdd4db;
-  --score-board-score-background-color: #effdfb;
-  --score-board-background-image-url-player-x: url("./unicorn/glyph-x.svg");
-  --score-board-background-image-url-player-o: url("./unicorn/glyph-o.svg");
+  --score-board-player-background-color: #fff;
+  --score-board-score-background-color: #fff;
+  --score-board-background-image-url-player-x: url("./unicorn/glyph-x.png");
+  --score-board-background-image-url-player-o: url("./unicorn/glyph-o.png");
   --score-board-score-font-size: 26px;
   --scoreboard-gap: 30px;
 
   --settings-button-background-image-url: url("./banana/settings.svg");
 
-  --board-border: solid 3px #dcb2c9;
-  --board-border-radius: 20px;
+  --board-border: solid 3px #eb7d83;
+  --board-border-radius: 5px;
   --board-background-color: #fff;
-  --board-shadow: 2px 3px 7px -5px #0000005c;
-  --board-padding: 0px;
+  --board-shadow: 0px 0px 0px 3px #fff;
+  --board-padding: 0;
 }
 
 .theme-wood {
+  /* todo */
 }
 
 .theme-retro {
+  /* todo */
 }

@@ -5,7 +5,7 @@
   box-sizing: border-box;
   cursor: pointer;
   border-radius: var(--button-border-radius);
-  border: solid 1px var(--button-border-color);
+  border: var(--button-border);
   outline: 0;
   color: var(--input-color);
   background-image: var(--dropdown-background-image);
