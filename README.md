@@ -5,7 +5,7 @@
 
 # Tic Tac Toe
 
-Learning React while doing the [tutorial](https://reactjs.org/tutorial/tutorial.html), then adding fun features such as themes and adjustable rows/columns :smile:.
+Learning React while adding fun features, such as themes and adjustable rows/columns :smile:.
 
 View the [live build](https://crazytim.github.io/tic-tac-toe).
 
@@ -24,9 +24,11 @@ npm start
 npm run deploy
 ```
 
-For information about deploying a Create React App to GitHub Pages [refer here](https://create-react-app.dev/docs/deployment/#github-pages).
+[Refer here](https://create-react-app.dev/docs/deployment/#github-pages) for information about deploying a Create React App to GitHub Pages.
 
 ## Features
+
+I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html) and then added the following features:
 
 - Fancy styles.
 - Themes.
