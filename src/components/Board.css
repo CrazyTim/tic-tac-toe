@@ -54,7 +54,7 @@
   }
 
   .square.disabled:hover {
-    background-color: var(--button-background-color);
+    background-color: var(--button-background-color-disabled);
   }
 
   .square.winner:hover {
