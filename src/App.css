@@ -21,14 +21,23 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  opacity: 0;
-  transition: opacity 1s;
-  background-color: var(--game-background-color);
   overflow-y: scroll;
+
+  /* show loading icon */
+  background-color: #eee;
+  background-image: url('loading-icon.svg');
+  background-size: 60px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.game-wrapper.loaded {
-  opacity: 1;
+.game-wrapper.loaded{
+  background-color: var(--game-background-color);
+  background-image: none;
+}
+
+.loading-icon {
+   flex: 1;
 }
 
 .game {
@@ -38,6 +47,12 @@ body, html {
   justify-content: center;
   padding-bottom: 30px;
   color: var(--game-color);
+  opacity: 0; /* hide while app is loading */
+  transition: opacity 1s;
+}
+
+.game-wrapper.loaded .game {
+  opacity: 1;
 }
 
 .game > * {
