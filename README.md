@@ -5,7 +5,7 @@
 
 # Tic Tac Toe
 
-Learning React while adding fun features, such as themes and adjustable rows/columns :smile:.
+Learning React while adding fun features.
 
 View the [live build](https://crazytim.github.io/tic-tac-toe).
 
@@ -28,19 +28,20 @@ npm run deploy
 
 ## Features
 
-I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html) and then added the following features:
+I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html) and then added the following:
 
-- Fancy styles.
-- Themes.
+- Its a web app (so go install it on your phone I guess).
+- You can switch between several themes :sunglasses: (implemented with css variables).
 - The board is automatically reset once the game is over.
 - The winning squares are highlighted green when the game is over.
 - A message is shown when the game is tied.
-- A new win algorithm that allows for a dynamic number of rows, columns, and the number of symbols that you need to get in a line to win. Note that changing this actually breaks the game, but its fun to see it work!
-- User can change some of the settings, including the number of rows and columns.
+- A new win algorithm that allows for a dynamic number of rows, columns, and the number of symbols that you need to get in a line to win. Note that changing this actually breaks the game, but its fun to see it work! :smile:
+- Settings are saved to Web Storage.
 - Each player's score is shown above the board.
 - The multiple undo buttons for each turn have been replaced with a single undo button.
 - Components and styles have been separated into their own files.
 - The `Square` component was removed (unnecessary, replaced with a styled `Button`).
 
+
 ## Acknowledgements
-- Icons adapted from [Octicons](https://github.com/primer/octicons), MIT license.
+- Some icons adapted from [Octicons](https://github.com/primer/octicons), MIT license.
