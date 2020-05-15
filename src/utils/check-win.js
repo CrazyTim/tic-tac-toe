@@ -1,4 +1,3 @@
-
 export default function checkWin(squares, numRows, numCols, cell, numCellsInALineToWin) {
   // look in all directions around this cell to see if the player has won
 
@@ -6,26 +5,34 @@ export default function checkWin(squares, numRows, numCols, cell, numCellsInALin
 
   // define x/y steps for each direction we need to search
   const directions = [
-    ['n ', 0,-1],
-    ['ne', 1,-1],
-    ['e ', 1, 0],
-    ['se', 1, 1],
-    ['s ', 0, 1],
-    ['sw',-1, 1],
-    ['w ',-1, 0],
-    ['nw',-1,-1],
+    {name:'n',  xStep:0,  yStep:-1},
+    {name:'ne', xStep:1,  yStep:-1},
+    {name:'e',  xStep:1,  yStep:0},
+    {name:'se', xStep:1,  yStep:1},
+    {name:'s',  xStep:0,  yStep:1},
+    {name:'sw', xStep:-1, yStep:1},
+    {name:'w',  xStep:-1, yStep:0},
+    {name:'nw', xStep:-1, yStep:-1},
   ];
 
   // check in each direction for a match
   for (let i=0; i<directions.length; i++) {
-    const xStep = directions[i][1];
-    const yStep = directions[i][2];
-    const winningSquares = check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToWin);
+
+    const winningSquares = check(
+      squares,
+      numRows,
+      numCols,
+      cell,
+      directions[i].xStep,
+      directions[i].yStep,
+      numCellsInALineToWin);
+
     if (winningSquares.length === numCellsInALineToWin) return winningSquares; // match found
+
   }
 
   return []; // no matches found
-  
+
 }
 
 function check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToWin) {
@@ -41,7 +48,7 @@ function check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToW
   const thisCol = cell % numCols; // index
   const lookAheadCol = thisCol + (xStep * (numCellsInALineToWin - 1));
   if (lookAheadCol > (numCols-1) || lookAheadCol < 0) return [];
-  
+
   // check if we would extend beyond the grid on y-axis
   const thisRow = Math.floor(cell / numRows); // index
   const lookAheadRow = thisRow + (yStep * (numCellsInALineToWin - 1));
@@ -58,9 +65,9 @@ function check(squares, numRows, numCols, cell, xStep, yStep, numCellsInALineToW
     } else {
       return [];
     }
-    
+
   }
-  
+
   return found;
 
 }
