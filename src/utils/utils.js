@@ -23,3 +23,26 @@ export function isNumber(s) {
   // could also coerce to string: str = ""+str
   return !isNaN(s) && !isNaN(parseFloat(s));
 }
+
+/* Wrapper for `localStorage` to check if the browser supports it */
+export class WebStorage {
+
+  save (key, val) {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(key, val);
+      return true;
+    }
+    return false;
+  }
+
+  /* Note: localStorage will always return a string
+  /* You may need to coerce the type after loading
+  */
+  load (key) {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(key);
+    }
+    return ''
+  }
+
+}

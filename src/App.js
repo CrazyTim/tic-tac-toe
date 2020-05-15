@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import {clone, ZERO_WIDTH_SPACE} from './utils/utils.js'
+import {clone, ZERO_WIDTH_SPACE, WebStorage} from './utils/utils.js'
 import checkWin from './utils/check-win.js'
 import Board from './components/Board.js';
 import Button from './components/Button.js';
@@ -17,15 +17,18 @@ export default class App extends React.Component {
 
     super(props);
 
+    this.webStorage = new WebStorage();
+
     // get ref so we can lookup the scrollHeight to animate it
     this.settingsPanel = null;
     this.setSettingsPanel = element => {
       this.settingsPanel = element;
     };
 
-    const defaultNumRows = 3;
-    const defaultNumCols = 3;
-    const defaultNumCellsInALineToWin = 3;
+    const defaultThemeId = parseInt(this.webStorage.load('themeId')) || 0;
+    const defaultNumRows = parseInt(this.webStorage.load('numRows')) || 3;
+    const defaultNumCols = parseInt(this.webStorage.load('numCols')) || 3;
+    const defaultNumCellsInALineToWin = parseInt(this.webStorage.load('numCellsInALineToWin')) || 3;
 
     // define the default state for a game separately so we can reset it when the game is over
     const defaultGameState = {
@@ -43,16 +46,16 @@ export default class App extends React.Component {
       ...defaultGameState,
       defaultGameState,
       settings: {
-        numRows: 3,
-        numCols: 3,
-        numCellsInALineToWin: 3,
+        numRows: defaultNumRows,
+        numCols: defaultNumCols,
+        numCellsInALineToWin: defaultNumCellsInALineToWin,
       },
       score: {
         X: 0,
         O: 0,
       },
       inputs: {
-        dropdownThemeId: 0,
+        dropdownThemeId: defaultThemeId,
         inputStepperRows: defaultNumRows,
         inputStepperCols: defaultNumCols,
         inputStepperCells: defaultNumCellsInALineToWin,
@@ -103,6 +106,10 @@ export default class App extends React.Component {
       settings.numRows = this.state.inputs.inputStepperRows;
       settings.numCols = this.state.inputs.inputStepperCols;
       settings.numCellsInALineToWin = this.state.inputs.inputStepperCells;
+
+      this.webStorage.save('numRows', settings.numRows);
+      this.webStorage.save('numCols', settings.numCols);
+      this.webStorage.save('numCellsInALineToWin', settings.numCellsInALineToWin);
 
       // initalise new default game state
       const defaultGameState = clone(this.state.defaultGameState);
@@ -213,6 +220,8 @@ export default class App extends React.Component {
 
     const inputs = clone(this.state.inputs);
     inputs.dropdownThemeId = newThemeId;
+
+    this.webStorage.save('themeId', newThemeId);
 
     this.setState({inputs}, () => {
       // resize settings panel to fit the new theme
