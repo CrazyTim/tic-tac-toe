@@ -31,7 +31,7 @@ npm run deploy
 I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html) and then added the following:
 
 - Its a web app (so go install it on your phone I guess).
-- You can switch between several themes :sunglasses: (implemented with css variables).
+- You can switch between several themes :sunglasses:.
 - The board is automatically reset once the game is over.
 - The winning squares are highlighted green when the game is over.
 - A message is shown when the game is tied.
