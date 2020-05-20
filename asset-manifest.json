@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/tic-tac-toe/static/css/main.cb355c70.chunk.css",
+    "main.js": "/tic-tac-toe/static/js/main.1bdee166.chunk.js",
+    "main.js.map": "/tic-tac-toe/static/js/main.1bdee166.chunk.js.map",
+    "runtime-main.js": "/tic-tac-toe/static/js/runtime-main.df28867d.js",
+    "runtime-main.js.map": "/tic-tac-toe/static/js/runtime-main.df28867d.js.map",
+    "static/js/2.105fbc19.chunk.js": "/tic-tac-toe/static/js/2.105fbc19.chunk.js",
+    "static/js/2.105fbc19.chunk.js.map": "/tic-tac-toe/static/js/2.105fbc19.chunk.js.map",
+    "index.html": "/tic-tac-toe/index.html",
+    "precache-manifest.765b31fb77d70f8b4449a6b77d75d4e2.js": "/tic-tac-toe/precache-manifest.765b31fb77d70f8b4449a6b77d75d4e2.js",
+    "service-worker.js": "/tic-tac-toe/service-worker.js",
+    "static/css/main.cb355c70.chunk.css.map": "/tic-tac-toe/static/css/main.cb355c70.chunk.css.map",
+    "static/js/2.105fbc19.chunk.js.LICENSE.txt": "/tic-tac-toe/static/js/2.105fbc19.chunk.js.LICENSE.txt",
+    "static/media/themes.css": "/tic-tac-toe/static/media/triangle-down.6f16008b.svg",
+    "static/media/App.css": "/tic-tac-toe/static/media/loading-icon.3a632121.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df28867d.js",
+    "static/js/2.105fbc19.chunk.js",
+    "static/css/main.cb355c70.chunk.css",
+    "static/js/main.1bdee166.chunk.js"
+  ]
+}
