@@ -17,6 +17,7 @@
   border-radius: var(--button-border-radius);
   overflow: hidden;
   box-shadow: 2px 3px 7px -5px #0000005c;
+  min-width: var(--score-board-player-min-width);
 }
 
 .score-board .player div {

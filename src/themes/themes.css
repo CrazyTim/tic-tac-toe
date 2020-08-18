@@ -46,8 +46,9 @@
   --square-width: 62px;
 
   --score-board-player-border: solid 1px #7d7d7d;
-  --score-board-player-padding: 10px 22px;
-  --score-board-player-background-size: 20px;
+  --score-board-player-padding: 10px;
+  --score-board-player-min-width: 45px;
+  --score-board-player-background-size: 25px;
   --score-board-player-background-color: #ffe979;
   --score-board-score-background-color: #fff;
   --score-board-background-image-url-player-x: url("./banana/glyph-x.svg");
@@ -102,7 +103,8 @@
   --settings-button-background-image-url: url("./banana/settings.svg");
 
   --score-board-player-border: solid 2px #00aaaa;
-  --score-board-player-padding: 5px 20px;
+  --score-board-player-padding: 5px;
+  --score-board-player-min-width: 40px;
   --score-board-player-background-size: 18px;
   --score-board-player-background-color: white;
   --score-board-score-background-color: blacks;
@@ -158,8 +160,9 @@
   --square-width: 70px;
 
   --score-board-player-border: solid 1px #f5a3a7;
-  --score-board-player-padding: 10px 25px;
-  --score-board-player-background-size: 42px;
+  --score-board-player-padding: 8px;
+  --score-board-player-min-width: 58px;
+  --score-board-player-background-size: 34px;
   --score-board-player-background-color: #fff;
   --score-board-score-background-color: #fff;
   --score-board-background-image-url-player-x: url("./unicorn/glyph-x.png");
