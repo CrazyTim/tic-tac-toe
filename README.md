@@ -5,32 +5,13 @@
 
 # Tic Tac Toe
 
-Learning React while adding fun features.
-
-View the [live build](https://crazytim.github.io/tic-tac-toe).
-
-## Getting Started
-
-Install Node.js, clone this repo, then run:
-
-```
-npm install
-npm start
-```
-
-## Deploy to GitHub Pages
-
-```
-npm run deploy
-```
-
-[Refer here](https://create-react-app.dev/docs/deployment/#github-pages) for information about deploying a Create React App to GitHub Pages.
+Learning React. View the [live build](https://crazytim.github.io/tic-tac-toe).
 
 ## Features
 
-I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html) and then added the following:
+I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html), and then added the following features:
 
-- Its a web app (so go install it on your phone I guess).
+- Its a web app (so go install it on your phone :man_shrugging:).
 - You can switch between several themes :sunglasses:.
 - The board is automatically reset once the game is over.
 - The winning squares are highlighted green when the game is over.
@@ -42,6 +23,30 @@ I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html) and
 - Components and styles have been separated into their own files.
 - The `Square` component was removed (unnecessary, replaced with a styled `Button`).
 
+## Getting Started
+
+Install Node.js, clone this repo, then run:
+
+```shell
+npm install
+npm start
+```
+
+## Deploy to GitHub Pages
+
+The first time you will need to generate a personal access token and then run:
+
+```shell
+git remote set-url origin https://crazytim:<token>@github.com/crazytim/tic-tac-toe
+```
+
+To deploy:
+
+```shell
+npm run deploy
+```
+
+[Refer here](https://create-react-app.dev/docs/deployment/#github-pages) for information about deploying a Create React App to GitHub Pages.
 
 ## Acknowledgements
 - Some icons adapted from [Octicons](https://github.com/primer/octicons), MIT license.
