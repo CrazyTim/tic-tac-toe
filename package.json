@@ -5,7 +5,7 @@
   "homepage": "https://crazytim.github.io/tic-tac-toe",
   "dependencies": {
     "classnames": "^2.2.6",
-    "gh-pages": "^2.2.0",
+    "gh-pages": "^3.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
