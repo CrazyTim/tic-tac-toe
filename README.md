@@ -16,7 +16,7 @@ I completed the [React tutorial](https://reactjs.org/tutorial/tutorial.html), an
 - The board is automatically reset once the game is over.
 - The winning squares are highlighted green when the game is over.
 - A message is shown when the game is tied.
-- A new win algorithm that allows for a dynamic number of rows, columns, and the number of symbols that you need to get in a line to win. Note that changing this actually breaks the game, but its fun to see it work! :smile:
+- A new win algorithm that allows for a dynamic number of rows, columns, and the number of symbols that you need to get in a line to win. Anything other than 3x3 makes the game unfair, but its still fun to see it work! :smile:
 - Settings are saved to Web Storage.
 - Each player's score is shown above the board.
 - The multiple undo buttons for each turn have been replaced with a single undo button.
